@@ -1,7 +1,7 @@
 import { Divider } from "@mantine/core";
 import { useAuthContext } from "../../context/authContext/authContext";
 import Form from "./components/Form";
-import { SocialButtons } from "./components/social-buttons/SocialButtons";
+import SocialButtons from "./components/social-buttons/SocialButtons";
 
 export default function AuthPage() {
   const { type } = useAuthContext();

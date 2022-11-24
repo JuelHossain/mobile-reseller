@@ -23,8 +23,8 @@ const NavLink = forwardRef(({ nav, ...props }, ref) => {
       {...props}
       {...propsToPass()}
       ref={ref}
-      variant={(path.includes(link) && link !== "/") || (pathname === "/" && link === "/") ? "light" : "subtle"}
-      className="capitalize"
+      variant={(path.includes(link) && link !== "/") || (pathname === "/" && link === "/") ? "filled" : "light"}
+      className="capitalize h-8"
     >
       {name}
     </Button>
