@@ -1,7 +1,7 @@
 import { createUserWithEmailAndPassword, sendEmailVerification, updateProfile } from "firebase/auth";
 import { useState } from "react";
 import auth from "../../firebase";
-import useAddUser from "../../hooks/auth/useAddUser";
+import useToken from "../../hooks/auth/useToken";
 import usePhotoURL from "./usePhotoURL";
 
 export default function useRegister() {
@@ -11,9 +11,9 @@ export default function useRegister() {
 
   const { upload } = usePhotoURL();
 
-  const { createUserAsync } = useAddUser();
+  const { generateTokenAsync } = useToken();
 
-  const register = async ({ email: userEmail, password, name, photo, role }) => {
+  const register = async ({ email: userEmail, password, name, photo, seller }) => {
     try {
       setLoading(true);
       const { user } = await createUserWithEmailAndPassword(auth, userEmail, password);
@@ -24,13 +24,7 @@ export default function useRegister() {
 
       await updateProfile(user, { displayName: name, photoURL: url });
 
-      console.log(user);
-
-      const { email, displayName, photoURL, phoneNumber, emailVerified, providerData, uid } = user || {};
-
-      const newUser = { email, displayName, photoURL, phoneNumber, emailVerified, providerData, uid, role };
-
-      await createUserAsync(newUser);
+      await generateTokenAsync({ ...user, seller });
 
       setUser(user);
       setLoading(false);

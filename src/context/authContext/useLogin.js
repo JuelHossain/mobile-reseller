@@ -14,7 +14,7 @@ export default function useLogin() {
     try {
       setLoading(true);
       const { user } = await signInWithEmailAndPassword(auth, email, password);
-      await generateTokenAsync({ email });
+      await generateTokenAsync(user);
       setUser(user);
       setLoading(false);
       return user;

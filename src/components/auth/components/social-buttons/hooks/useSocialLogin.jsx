@@ -2,31 +2,27 @@ import { useEffect } from "react";
 import { useSignInWithFacebook, useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { useAuthContext } from "../../../../../context/authContext/authContext";
 import auth from "../../../../../firebase";
-import useAddUser from "../../../../../hooks/auth/useAddUser";
+import useToken from "../../../../../hooks/auth/useToken";
 
 export default function useSocialLogin() {
-  const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
-  const [singInWithFacebook, facebookUser, facebookLoading, githubError] = useSignInWithFacebook(auth);
+  const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+  const [singInWithFacebook, fUser, fLoading, fError] = useSignInWithFacebook(auth);
 
   const { setError } = useAuthContext();
 
-  const { createUser, creatingUser, error: creatingError } = useAddUser();
+  const { generateToken, generatingToken, error: tokenError } = useToken();
 
-  const loading = googleLoading || facebookLoading || createUser;
-
-  const user = googleUser || facebookUser;
-  const error = googleError || githubError || creatingError;
-  const gLoading = googleLoading || creatingUser;
-  const fLoading = facebookLoading || loading;
+  const { user } = gUser || fUser || {};
+  const error = gError || fError || tokenError;
 
   useEffect(() => {
     if (user) {
-      createUser(user);
+      generateToken(user);
     }
     if (error) {
       setError(error.message);
     }
-  }, [user, error, setError, createUser]);
+  }, [user, error, setError, generateToken]);
 
-  return { signInWithGoogle, gLoading, singInWithFacebook, fLoading };
+  return { signInWithGoogle, gLoading, singInWithFacebook, fLoading, generatingToken };
 }

@@ -19,7 +19,7 @@ const initialValues = {
   name: "",
   email: "",
   password: "",
-  terms: false,
+  seller: false,
   photo: null,
 };
 const initialForm = (type) => ({ initialValues, validate: validation(type) });

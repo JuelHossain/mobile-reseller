@@ -14,11 +14,12 @@ export default function useToken() {
   const queryClient = useQueryClient();
   const mutation = useMutation({
     mutationFn: getToken,
-    onSuccess: (data) => {
+    onSuccess: ({ data }) => {
       setToken(data?.accessToken);
       queryClient.invalidateQueries({ queryKey: ["get-user"] });
     },
     onError: () => {
+      console.log("something wrong");
       removeToken();
     },
   });
