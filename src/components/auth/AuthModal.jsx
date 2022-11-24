@@ -1,15 +1,14 @@
 import { Modal, Text, Title } from "@mantine/core";
 import { useEffect } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { useAuthContext } from "../../context/authContext/authContext";
 import { useModalContext } from "../../context/modalContext";
-import auth from "../../firebase";
+import useUser from "../../hooks/auth/useUser";
 import AuthPage from "./AuthPage";
 
 export default function AuthModal() {
   const { authModal } = useModalContext();
   const { type, toggleType } = useAuthContext();
-  const [user] = useAuthState(auth);
+  const { user } = useUser();
 
   const [opened, { close }] = authModal;
 

@@ -4,13 +4,13 @@ import GoogleButton from "./buttons/GoogleButton";
 import useSocialLogin from "./hooks/useSocialLogin";
 
 export default function SocialButtons() {
-  const { googleLoading, signInWithGoogle, facebookLoading, singInWithFacebook } = useSocialLogin();
+  const { gLoading, signInWithGoogle, fLoading, singInWithFacebook } = useSocialLogin();
 
   return (
     <Group mb="md" mt="md">
-      <GoogleButton loading={googleLoading} onClick={() => signInWithGoogle()} />
+      <GoogleButton loading={gLoading} onClick={() => signInWithGoogle()} />
 
-      <FacebookButton loading={facebookLoading} onClick={() => singInWithFacebook()} />
+      <FacebookButton loading={fLoading} onClick={() => singInWithFacebook()} />
     </Group>
   );
 }

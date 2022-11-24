@@ -5,14 +5,15 @@ import { useTokenContext } from "../../context/tokenContext";
 
 export default function useToken() {
   const { setToken, removeToken } = useTokenContext();
-  const generateToken = async (user) => {
+
+  const getToken = async (user) => {
     const { data } = await axios.put(`/users`, user);
     return data;
   };
 
   const queryClient = useQueryClient();
   const mutation = useMutation({
-    mutationFn: generateToken,
+    mutationFn: getToken,
     onSuccess: (data) => {
       setToken(data?.accessToken);
       queryClient.invalidateQueries({ queryKey: ["get-user"] });
@@ -21,5 +22,7 @@ export default function useToken() {
       removeToken();
     },
   });
-  return mutation;
+  const { mutate: generateToken, mutateAsync: generateTokenAsync, isLoading: generatingToken } = mutation ?? {};
+
+  return { ...mutation, generateToken, generateTokenAsync, generatingToken };
 }

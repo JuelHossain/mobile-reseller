@@ -2,12 +2,14 @@ import { Chip } from "@mantine/core";
 import { useAuthContext } from "../../../../context/authContext/authContext";
 
 export default function Role() {
-  const { role, toggleRole, type } = useAuthContext();
-  const seller = role === "seller";
+  const { setFieldValue, values, type } = useAuthContext();
+  const seller = values.role === "seller";
+  const toggleRole = () => setFieldValue("role", seller ? "buyer" : "seller");
+
   return (
     type === "register" && (
       <Chip size="sm" radius={4} onClick={toggleRole} checked={seller}>
-        {seller ? "Creating" : "Create"} Seller Account
+        {seller ? "Create" : "Creating"} Seller Account
       </Chip>
     )
   );

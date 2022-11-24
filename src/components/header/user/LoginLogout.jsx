@@ -10,7 +10,6 @@ import UserButton from "./UserButton";
 
 export default function LoginLogout() {
   const { user, userLoading } = useUser();
-  console.log(user?.role);
   const { loading } = useAuthContext();
   const { disclosure } = useHeaderContext();
   const [, { close: closeMenu }] = disclosure;
