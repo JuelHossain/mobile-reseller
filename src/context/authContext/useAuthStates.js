@@ -9,11 +9,11 @@ export default function useAuthStates() {
   const passwordResetDisclosure = useDisclosure();
   const [error, setError] = useState("");
   const [alert, setAlert] = useState("");
+  const [role, toggleRole] = useToggle(["buyer", "seller"]);
 
   const form = useForm(initialForm(type));
   const { terms } = form.errors ?? {};
   const { authHandler, loading } = useAuthHandler({ form, type, setError });
-
   useEffect(() => {
     setError(terms || "");
   }, [terms]);
@@ -22,6 +22,8 @@ export default function useAuthStates() {
     type,
     error,
     alert,
+    role,
+    toggleRole,
     toggleType,
     setError,
     setAlert,

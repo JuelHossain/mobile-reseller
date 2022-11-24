@@ -1,9 +1,10 @@
 import { Button } from "@mantine/core";
-import { Link } from "react-router-dom";
+import { Link, useMatch } from "react-router-dom";
 
 export default function DashboardButton() {
+  const match = useMatch("/dashboard");
   return (
-    <Button variant="outline" className=" h-8" component={Link} to="dashboard">
+    <Button variant={match ? "filled" : "outline"} className=" h-8" component={Link} to="dashboard">
       Dashboard
     </Button>
   );

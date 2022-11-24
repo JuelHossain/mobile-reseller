@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useSignInWithFacebook, useSignInWithGoogle } from "react-firebase-hooks/auth";
 import { useAuthContext } from "../../../../../context/authContext/authContext";
 import auth from "../../../../../firebase";
-import useToken from "../../../../../hooks/auth/useToken";
 
 export default function useSocialLogin() {
   const [signInWithGoogle, googleUser, googleLoading, googleError] = useSignInWithGoogle(auth);
@@ -13,16 +12,11 @@ export default function useSocialLogin() {
   const user = googleUser || facebookUser;
   const error = googleError || githubError;
 
-  const { mutate: generateToken } = useToken();
-
   useEffect(() => {
     if (error) {
       setError(error.message);
     }
-    if (user) {
-      generateToken(user);
-    }
-  }, [user, error, setError, generateToken]);
+  }, [user, error, setError]);
 
   return { signInWithGoogle, googleLoading, singInWithFacebook, facebookLoading };
 }

@@ -22,6 +22,7 @@ export default function useAuthHandler({ form, type, setError }) {
   const authHandler = (e) => {
     onSubmit(async (data) => {
       const { email, password, name, photo } = data;
+     
       if (type === "login") {
         await signInWithEmailAndPassword(email, password);
       } else {

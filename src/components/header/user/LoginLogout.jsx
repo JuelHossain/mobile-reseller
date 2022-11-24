@@ -1,16 +1,16 @@
 import { Button, Group, LoadingOverlay } from "@mantine/core";
 
-import { useAuthState } from "react-firebase-hooks/auth";
 import { useAuthContext } from "../../../context/authContext/authContext";
 import { useHeaderContext } from "../../../context/headerContext";
 import { useModalContext } from "../../../context/modalContext";
-import auth from "../../../firebase";
+import useUser from "../../../hooks/auth/useUser";
 import DashboardButton from "./DashboardButton";
 import LogoutButton from "./LogoutButton";
 import UserButton from "./UserButton";
 
 export default function LoginLogout() {
-  const [user, userLoading] = useAuthState(auth);
+  const { user, userLoading } = useUser();
+  console.log(user?.role);
   const { loading } = useAuthContext();
   const { disclosure } = useHeaderContext();
   const [, { close: closeMenu }] = disclosure;
