@@ -1,25 +1,24 @@
 import { Button, Card, Center, LoadingOverlay, ThemeIcon, Title } from "@mantine/core";
 import { IconLock } from "@tabler/icons";
 import { useEffect } from "react";
-import { useAuthState } from "react-firebase-hooks/auth";
 import { useModalContext } from "../../context/modalContext";
-import auth from "../../firebase";
+import useUser from "../../hooks/auth/useUser";
 
 export default function PrivateRoute({ children }) {
-  const [user, loading] = useAuthState(auth);
+  const { user, userLoading } = useUser();
   const { authModal } = useModalContext();
   const [, { open, close }] = authModal;
 
   useEffect(() => {
     if (user) {
       close();
-    } else if (!loading) {
+    } else if (!userLoading) {
       open();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
-  if (loading) {
+  if (userLoading) {
     return <LoadingOverlay visible />;
   }
   if (user) {

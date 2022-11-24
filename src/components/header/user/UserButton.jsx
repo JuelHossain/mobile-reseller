@@ -1,12 +1,11 @@
 import { ActionIcon, Avatar, HoverCard } from "@mantine/core";
 
 import { IconUser } from "@tabler/icons";
-import { useAuthState } from "react-firebase-hooks/auth";
-import auth from "../../../firebase";
+import useUser from "../../../hooks/auth/useUser";
 import UserPreview from "./UserPreview";
 
 export default function UserButton() {
-  const [user] = useAuthState(auth);
+  const { user } = useUser();
 
   return (
     <HoverCard>

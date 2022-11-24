@@ -1,7 +1,6 @@
 import { Avatar, createStyles, Group, Text, UnstyledButton } from "@mantine/core";
 import { IconChevronRight } from "@tabler/icons";
-import { useAuthState } from "react-firebase-hooks/auth";
-import auth from "../../../firebase";
+import useUser from "../../../hooks/auth/useUser";
 
 const useStyles = createStyles((theme) => ({
   user: {
@@ -18,7 +17,7 @@ const useStyles = createStyles((theme) => ({
 
 export default function UserPreview() {
   const { classes } = useStyles();
-  const [user] = useAuthState(auth);
+  const { user } = useUser();
   const { photoURL, displayName, email } = user ?? {};
 
   return (
