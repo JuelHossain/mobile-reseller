@@ -1,11 +1,22 @@
-import { AppShell, Footer, Header } from "@mantine/core";
-import { RouterProvider } from "react-router-dom";
-import router from "./router";
+import { Outlet } from "react-router-dom";
+import Footer from "./components/footer/Footer";
+import AppHeader from "./components/header/Header";
+import AllContextProvider from "./components/shared/AllContextProvider";
+import AllModal from "./components/shared/AllModal";
 
 export default function App() {
   return (
-    <AppShell header={<Header />} footer={<Footer />}>
-      <RouterProvider router={router} />
-    </AppShell>
+    <AllContextProvider>
+      <div className="min-h-screen flex justify-between flex-col">
+        <AppHeader />
+        <div className=" flex flex-col mt-[8vh]">
+          <div className="flex-1">
+            <Outlet />
+          </div>
+        </div>
+        <Footer />
+        <AllModal />
+      </div>
+    </AllContextProvider>
   );
 }
