@@ -9,7 +9,7 @@ const useLinks = () => {
 
   const links = [
     { name: "home", link: "/", Icon: IconHome },
-    { name: "services", link: "services", Icon: IconBlockquote },
+    { name: "products", link: "products", Icon: IconBlockquote },
     { name: "blog", link: "blog", Icon: IconAerialLift },
   ];
 

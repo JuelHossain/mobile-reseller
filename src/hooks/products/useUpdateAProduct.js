@@ -2,7 +2,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 
-export const updateService = async ({ patch, id }) => {
+export const updateAProduct = async ({ patch, id }) => {
   const { data: response } = await axios.patch(`/services/${id}`, patch);
   return response;
 };
@@ -12,12 +12,12 @@ export default function useUpdateAProduct() {
 
   // refetch on query end
   const refetch = ({ id }) => {
-    const queryKey = ["get-service", id];
+    const queryKey = ["get-product", id];
     queryClient.invalidateQueries({ queryKey });
   };
 
   const mutation = useMutation({
-    mutationFn: updateService,
+    mutationFn: updateAProduct,
     onSettled: refetch,
   });
   return mutation;

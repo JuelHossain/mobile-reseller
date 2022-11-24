@@ -1,10 +1,10 @@
 import { Button, Group, LoadingOverlay } from "@mantine/core";
 
 import { useAuthState } from "react-firebase-hooks/auth";
-import { useAuthContext } from "../../../context/authContext/authContext";
-import { useHeaderContext } from "../../../context/headerContext";
-import { useModalContext } from "../../../context/modalContext";
-import auth from "../../../firebase";
+import { useAuthContext } from "../../../src/context/authContext/authContext";
+import { useHeaderContext } from "../../../src/context/headerContext";
+import { useModalContext } from "../../../src/context/modalContext";
+import auth from "../../../src/firebase";
 import LogoutButton from "./LogoutButton";
 import UserButton from "./UserButton";
 
@@ -13,6 +13,7 @@ export default function LoginLogout() {
   const { loading } = useAuthContext();
   const { disclosure } = useHeaderContext();
   const [, { close: closeMenu }] = disclosure;
+
   const { authModal } = useModalContext();
   const [, { open }] = authModal;
   return (

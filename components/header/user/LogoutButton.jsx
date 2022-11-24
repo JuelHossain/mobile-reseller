@@ -2,8 +2,8 @@ import { ActionIcon } from "@mantine/core";
 
 import { IconLogout } from "@tabler/icons";
 import { signOut } from "firebase/auth";
-import { useTokenContext } from "../../../context/tokenContext";
-import auth from "../../../firebase";
+import { useTokenContext } from "../../../src/context/tokenContext";
+import auth from "../../../src/firebase";
 
 export default function LogoutButton() {
   const { removeToken } = useTokenContext();

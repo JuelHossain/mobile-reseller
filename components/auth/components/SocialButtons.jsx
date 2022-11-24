@@ -2,9 +2,9 @@ import { Button, Group } from "@mantine/core";
 import { IconBrandGithub } from "@tabler/icons";
 import { useEffect } from "react";
 import { useSignInWithGithub, useSignInWithGoogle } from "react-firebase-hooks/auth";
-import { useAuthContext } from "../../../context/authContext/authContext";
-import auth from "../../../firebase";
-import useToken from "../../../hooks/auth/useToken";
+import { useAuthContext } from "../../../src/context/authContext/authContext";
+import auth from "../../../src/firebase";
+import useToken from "../../../src/hooks/auth/useToken";
 import GoogleIcon from "./icons/GoogleIcon";
 
 export function GoogleButton({ ...props }) {
