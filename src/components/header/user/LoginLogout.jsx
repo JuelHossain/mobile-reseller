@@ -5,6 +5,7 @@ import { useAuthContext } from "../../../context/authContext/authContext";
 import { useHeaderContext } from "../../../context/headerContext";
 import { useModalContext } from "../../../context/modalContext";
 import auth from "../../../firebase";
+import DashboardButton from "./DashboardButton";
 import LogoutButton from "./LogoutButton";
 import UserButton from "./UserButton";
 
@@ -20,6 +21,7 @@ export default function LoginLogout() {
       <LoadingOverlay loaderProps={{ size: "sm" }} visible={loading || userLoading} />
       {user ? (
         <>
+          <DashboardButton />
           <UserButton />
           <LogoutButton />
         </>

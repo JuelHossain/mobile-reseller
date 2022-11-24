@@ -25,7 +25,7 @@ export default function AuthModal() {
     <Modal
       title={
         <>
-          <Title order={4}>Welcome To Pro Dentist,</Title>
+          <Title order={4}>Welcome to Mobile Reseller,</Title>
           <Text>Please {type} with email</Text>
         </>
       }

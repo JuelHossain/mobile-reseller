@@ -1,5 +1,0 @@
-import { LoadingOverlay } from "@mantine/core";
-
-export default function Loading({ ...props }) {
-  return <LoadingOverlay {...props} overlayBlur={2} />;
-}

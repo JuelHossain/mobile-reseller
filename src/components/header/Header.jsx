@@ -9,7 +9,7 @@ import UserSection from "./user/UserSection";
 
 const AppHeader = forwardRef((props, ref) => (
   <Header ref={ref} className="fixed p-2 h-[8vh] flex  items-center">
-    <Group className={`justify-between duration-500 w-full `} noWrap>
+    <Group className={`justify-between duration-500 w-full items-end `} noWrap>
       <NavLinks />
       <Logo />
       <UserSection />

@@ -9,7 +9,7 @@ import NavLInk from "./NavLink";
 export default function MobileLinks() {
   const { disclosure } = useHeaderContext();
   const [opened, { open, close }] = disclosure;
-  const links = useLinks();
+  const {links} = useLinks();
   const mobileNavs = links.map((nav) => <NavLInk key={nav.name} nav={nav} />);
 
   return (

@@ -1,12 +1,6 @@
-import { IconAerialLift, IconBlockquote, IconHome, IconPlus, IconStar } from "@tabler/icons";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { useModalContext } from "../../../context/modalContext";
-import auth from "../../../firebase";
+import { IconAerialLift, IconBlockquote, IconDashboard, IconHome } from "@tabler/icons";
 
 const useLinks = () => {
-  const { addServiceModal } = useModalContext();
-  const [, { open }] = addServiceModal;
-
   const links = [
     { name: "home", link: "/", Icon: IconHome },
     { name: "products", link: "products", Icon: IconBlockquote },
@@ -15,18 +9,13 @@ const useLinks = () => {
 
   const privateLinks = [
     {
-      name: "Add Service",
-      link: open,
-      Icon: IconPlus,
-    },
-    {
-      name: "My Reviews",
-      link: "/my-reviews",
-      Icon: IconStar,
+      name: "dashboard",
+      link: "/dashboard",
+      Icon: IconDashboard,
     },
   ];
-  const [user] = useAuthState(auth);
-  return user ? [...links, ...privateLinks] : links;
+
+  return { links, privateLinks };
 };
 
 export default useLinks;
