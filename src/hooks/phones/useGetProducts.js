@@ -1,16 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
-export default function useGetProducts(options) {
+export default function useGetProducts(options = {}) {
   const queryOption = Object.keys(options).reduce((acc, option) => {
-    const queries = `${acc}&${option}=${options[option]}`;
+    const queries = `${acc}${acc === "" ? "?" : "&"}${option}=${options[option]}`;
     return queries;
   }, "");
 
   const query = useQuery({
     queryKey: ["get-products", ...Object.values(options)],
     queryFn: async () => {
-      const { data } = await axios(`/products?${queryOption}`);
+      const { data } = await axios(`/products${queryOption}`);
       return data;
     },
   });

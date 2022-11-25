@@ -23,9 +23,9 @@ export default function PhoneForm() {
       onSubmit={submitHandler}
       component="form"
       className="max-w-lg flex flex-col justify-center gap-4 w-full"
-      withBorder
+      withBorder={!exist}
     >
-      <Heading {...heading} />
+      {!exist && <Heading {...heading} />}
       <Group>
         <Brand />
         <Model />
