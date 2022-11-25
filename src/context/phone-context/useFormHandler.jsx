@@ -3,7 +3,7 @@ import useAddProduct from "../../hooks/phones/useAddProduct";
 import useUpdateAProduct from "../../hooks/phones/useUpdateAProduct";
 import useImageUpload from "../../hooks/shared/useImageUpload";
 
-export default function useFormHandler({ onSubmit }, id) {
+export default function useFormHandler({ onSubmit, reset }, id) {
   const { email } = useUser();
   const { addProduct, addingProduct, addError } = useAddProduct();
   const { updateProduct, updatingProduct, updateError } = useUpdateAProduct();
@@ -44,9 +44,12 @@ export default function useFormHandler({ onSubmit }, id) {
 
       const newPhone = { ...restData, imageLinks, createdAt: new Date(), createdBy: email, cat };
 
-      addProduct(newPhone);
+      addProduct(newPhone, {
+        onSuccess: () => {
+          reset();
+        },
+      });
     };
-
     onSubmit(handler)(e);
   };
 

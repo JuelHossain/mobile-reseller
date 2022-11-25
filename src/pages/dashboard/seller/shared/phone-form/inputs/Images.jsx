@@ -1,6 +1,6 @@
 import { Text } from "@mantine/core";
 import { Dropzone, IMAGE_MIME_TYPE } from "@mantine/dropzone";
-import { usePhoneFormContext } from "../../../../../context/phone-context/phoneFormcontext";
+import { usePhoneFormContext } from "../../../../../../context/phone-context/phoneFormcontext";
 
 export default function Images() {
   const { errors, values, setFieldValue, setFieldError } = usePhoneFormContext();
@@ -39,7 +39,7 @@ export default function Images() {
         <Text className="mb-2" align="center">
           {selected ? "Selected" : "Select"} Images Of Phone
         </Text>
-        <div className="duration-500 grid grid-cols-4 gap-2 h-6 sm:h-9 md:h-12 overflow-hidden">
+        <div className="duration-500 grid grid-cols-4 gap-2 h-6 xs:h-9 md:h-12 lg:h-16 overflow-hidden">
           {selected ? previews : placeholder}
         </div>
       </Dropzone>

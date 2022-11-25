@@ -1,6 +1,6 @@
 import { NumberInput } from "@mantine/core";
 import { IconMedal } from "@tabler/icons";
-import { usePhoneFormContext } from "../../../../../context/phone-context/phoneFormcontext";
+import { usePhoneFormContext } from "../../../../../../context/phone-context/phoneFormcontext";
 
 export default function Price() {
   const { getInputProps } = usePhoneFormContext();

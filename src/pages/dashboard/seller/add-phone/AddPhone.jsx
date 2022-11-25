@@ -1,6 +1,6 @@
 import { Center } from "@mantine/core";
 import { PhoneFormProvider } from "../../../../context/phone-context/phoneFormcontext";
-import PhoneForm from "../shared/PhoneForm";
+import PhoneForm from "../shared/phone-form/PhoneForm";
 
 export default function AddPhone() {
   return (
