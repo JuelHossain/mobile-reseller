@@ -1,7 +1,10 @@
+import { LoadingOverlay } from "@mantine/core";
 import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import Blog from "./components/blog/Blog";
+import useUser from "./hooks/auth/useUser";
 import Dashboard from "./pages/dashboard/Dashboard";
+import useDashboardLinks from "./pages/dashboard/links/useDashboardLinks";
 
 import ErrorPage from "./pages/errors/ErrorPage";
 import NotFound from "./pages/errors/NotFound";
@@ -11,10 +14,16 @@ import MobilePhones from "./pages/products/components/MobilePhones";
 import Products from "./pages/products/Products";
 
 const useRouter = () => {
-  const mobilePhones = categories.map((item) => {
-    const { label, link } = item;
-    if (label === "budget") return { index: true, element: <MobilePhones {...item} /> };
-    return { path: link, element: <MobilePhones {...item} /> };
+  const { userLoading } = useUser();
+  const dashboardLinks = useDashboardLinks();
+  const mobilePhones = categories.map((item, index) => {
+    const { link } = item;
+    return { index: index === 0, path: link, element: <MobilePhones {...item} /> };
+  });
+
+  const dashboardRoutes = dashboardLinks.map((item, index) => {
+    const { link, element } = item;
+    return { index: index === 0, path: link, element };
   });
 
   const router = createBrowserRouter([
@@ -36,6 +45,7 @@ const useRouter = () => {
         {
           path: "dashboard",
           element: <Dashboard />,
+          children: dashboardRoutes,
         },
         {
           path: "blog",
@@ -45,7 +55,7 @@ const useRouter = () => {
     },
     {
       path: "*",
-      element: <NotFound />,
+      element: userLoading ? <LoadingOverlay visible /> : <NotFound />,
     },
   ]);
   return router;

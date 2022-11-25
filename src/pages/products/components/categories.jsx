@@ -1,7 +1,7 @@
 import { IconArrowBounce, IconArrowDownSquare, IconArrowMoveRight, IconArrowUpSquare } from "@tabler/icons";
 
 const categories = [
-  { label: "Budget", icon: IconArrowDownSquare, description: "Lowest price phones", link: "/products/budget" },
+  { label: "Budget", icon: IconArrowDownSquare, description: "Lowest price phones", link: "/products" },
   {
     label: "Mid Range",
     icon: IconArrowBounce,

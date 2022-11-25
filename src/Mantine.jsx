@@ -2,7 +2,6 @@ import { useTheme, useThemeMode } from "@juel/hooks/theme";
 import { Box, ColorSchemeProvider, LoadingOverlay, MantineProvider } from "@mantine/core";
 import { ModalsProvider } from "@mantine/modals";
 import { NotificationsProvider } from "@mantine/notifications";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { RouterProvider } from "react-router-dom";
 import useAxiosSetup from "./hooks/auth/useAxiosSetup";
 import useRouter from "./router";
@@ -15,28 +14,26 @@ function Mantine() {
     colors: mode === "dark" ? darkColors : lightColors,
   };
   const theme = useTheme(customTheme);
-  const queryClient = new QueryClient();
+
   useAxiosSetup();
   const router = useRouter();
   return (
-    <QueryClientProvider client={queryClient}>
-      <ColorSchemeProvider colorScheme={mode} toggleColorScheme={toggleMode}>
-        <MantineProvider withGlobalStyles withNormalizeCSS theme={theme}>
-          <NotificationsProvider>
-            <ModalsProvider>
-              <RouterProvider
-                fallbackElement={
-                  <Box>
-                    <LoadingOverlay visible loaderProps={{ variant: "bars" }} />
-                  </Box>
-                }
-                router={router}
-              />
-            </ModalsProvider>
-          </NotificationsProvider>
-        </MantineProvider>
-      </ColorSchemeProvider>
-    </QueryClientProvider>
+    <ColorSchemeProvider colorScheme={mode} toggleColorScheme={toggleMode}>
+      <MantineProvider withGlobalStyles withNormalizeCSS theme={theme}>
+        <NotificationsProvider>
+          <ModalsProvider>
+            <RouterProvider
+              fallbackElement={
+                <Box>
+                  <LoadingOverlay visible loaderProps={{ variant: "bars" }} />
+                </Box>
+              }
+              router={router}
+            />
+          </ModalsProvider>
+        </NotificationsProvider>
+      </MantineProvider>
+    </ColorSchemeProvider>
   );
 }
 

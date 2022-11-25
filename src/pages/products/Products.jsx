@@ -6,7 +6,7 @@ import categories from "./components/categories";
 export default function Products() {
   return (
     <Group className="items-start">
-      <Sidebar navlinks={categories} title="Phone Categories" path="/products" />
+      <Sidebar navlinks={categories} title="Phone Categories" />
       <Outlet />
     </Group>
   );

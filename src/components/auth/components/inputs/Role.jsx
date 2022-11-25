@@ -7,7 +7,7 @@ export default function Role() {
   return (
     type === "register" && (
       <Chip size="sm" radius={4} {...getInputProps("seller")}>
-        {values?.seller ? "Create" : "Creating"} Seller Account
+        {values?.seller ? "Creating" : "Create"} Seller Account
       </Chip>
     )
   );

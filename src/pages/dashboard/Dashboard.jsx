@@ -1,13 +1,21 @@
 import { Group } from "@mantine/core";
 import { Outlet } from "react-router-dom";
+import PrivateRoute from "../../components/auth/PrivateRoute";
 import Sidebar from "../../components/sidebar/Sidebar";
-import categories from "../products/components/categories";
+import useUser from "../../hooks/auth/useUser";
+import useDashboardLinks from "./links/useDashboardLinks";
 
 export default function Dashboard() {
+  const { admin, seller } = useUser();
+  const links = useDashboardLinks();
+  // eslint-disable-next-line no-nested-ternary
+  const title = admin ? "Admin Dashboard" : seller ? "Seller Dashboard" : "Buyer Dashboard";
   return (
-    <Group className="items-start">
-      <Sidebar navlinks={categories} title="Phone Categories" path="/products" />
-      <Outlet />
-    </Group>
+    <PrivateRoute>
+      <Group className="items-start">
+        <Sidebar navlinks={links} title={title} />
+        <Outlet />
+      </Group>
+    </PrivateRoute>
   );
 }
