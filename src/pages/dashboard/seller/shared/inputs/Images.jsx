@@ -1,4 +1,4 @@
-import { Image, SimpleGrid, Text } from "@mantine/core";
+import { Text } from "@mantine/core";
 import { Dropzone, IMAGE_MIME_TYPE } from "@mantine/dropzone";
 import { usePhoneFormContext } from "../../../../../context/phone-context/phoneFormcontext";
 
@@ -8,8 +8,19 @@ export default function Images() {
   const previews = values.images.map((file) => {
     const imageUrl = window.URL.createObjectURL(file);
 
-    return <Image key={Math.random()} src={imageUrl} />;
+    return <img alt="preview" className="w-full h-full object-cover" key={Math.random()} src={imageUrl} />;
   });
+
+  const placeholder = [0, 1, 2, 3].map((n) => (
+    <img
+      alt="preview"
+      className="w-full h-full object-cover"
+      key={n}
+      src="https://t3.ftcdn.net/jpg/02/48/42/64/360_F_248426448_NVKLywWqArG2ADUxDq6QprtIzsF82dMF.jpg"
+    />
+  ));
+
+  const selected = previews.length > 0;
 
   return (
     <div>
@@ -25,13 +36,14 @@ export default function Images() {
         }}
         maxFiles={4}
       >
-        <Text align="center">Upload Images Of Phone</Text>
+        <Text className="mb-2" align="center">
+          {selected ? "Selected" : "Select"} Images Of Phone
+        </Text>
+        <div className="duration-500 grid grid-cols-4 gap-2 h-6 sm:h-9 md:h-12 overflow-hidden">
+          {selected ? previews : placeholder}
+        </div>
       </Dropzone>
       <p className="text-xs text-red-500">{errors.images}</p>
-
-      <SimpleGrid cols={4} mt={previews.length > 0 ? "xl" : 0} className={values?.images.length > 0 && "h-14"}>
-        {previews}
-      </SimpleGrid>
     </div>
   );
 }

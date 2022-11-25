@@ -19,7 +19,12 @@ export default function PhoneForm() {
     : { title: "Add Phone", text: "Please Add Your Phone" };
 
   return (
-    <Card onSubmit={submitHandler} component="form" className="max-w-lg flex flex-col justify-center gap-4" withBorder>
+    <Card
+      onSubmit={submitHandler}
+      component="form"
+      className="max-w-lg flex flex-col justify-center gap-4 w-full"
+      withBorder
+    >
       <Heading {...heading} />
       <Group>
         <Brand />
@@ -29,10 +34,10 @@ export default function PhoneForm() {
         <Price />
         <Condition />
       </Group>
+      <Images />
       <Description />
       <PhoneNumber />
       <Location />
-      <Images />
       <SubmitButton />
     </Card>
   );
