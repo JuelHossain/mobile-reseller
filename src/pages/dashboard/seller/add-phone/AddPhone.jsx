@@ -1,7 +1,10 @@
-export default function AddPhone (){
+import { Center } from "@mantine/core";
+import PhoneForm from "../shared/PhoneForm";
+
+export default function AddPhone() {
   return (
-    <div>
-      this is AddPhone
-    </div>
-  )
-};
+    <Center>
+      <PhoneForm />
+    </Center>
+  );
+}
