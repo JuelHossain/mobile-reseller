@@ -26,12 +26,12 @@ export default function DataTable({ data }) {
 
   return (
     <ScrollArea className="flex-1 relative">
-      <Table sx={{ minWidth: 500 }} verticalSpacing="sm" highlightOnHover>
+      <Table sx={{ minWidth: 500 }} verticalSpacing="sm" highlightOnHover withBorder>
         <TableHead {...props} />
         <TableBody {...props} />
       </Table>
       {selection.length > 0 && (
-        <ActionIcon size="sm" variant="filled" color="red" className=" absolute top-4 right-0" onClick={removeAll}>
+        <ActionIcon size="sm" variant="filled" color="red" className=" absolute top-4 right-4" onClick={removeAll}>
           <IconTrash size={18} />
         </ActionIcon>
       )}

@@ -5,7 +5,7 @@ import PhoneForm from "../shared/phone-form/PhoneForm";
 export default function AddPhone() {
   return (
     <PhoneFormProvider>
-      <Center className="flex-1">
+      <Center className="flex-1 justify-end">
         <PhoneForm />
       </Center>
     </PhoneFormProvider>

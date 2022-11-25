@@ -1,4 +1,4 @@
-import { Card, Group } from "@mantine/core";
+import { Group, Paper } from "@mantine/core";
 import { usePhoneFormContext } from "../../../../../context/phone-context/phoneFormcontext";
 import Brand from "./inputs/Brand";
 import Condition from "./inputs/Condition";
@@ -19,10 +19,10 @@ export default function PhoneForm() {
     : { title: "Add Phone", text: "Please Add Your Phone" };
 
   return (
-    <Card
+    <Paper
       onSubmit={submitHandler}
       component="form"
-      className="max-w-lg flex flex-col justify-center gap-4 w-full"
+      className={`max-w-lg flex flex-col justify-center gap-4 w-full ${!exist ? "p-4" : "pt-2"}`}
       withBorder={!exist}
     >
       {!exist && <Heading {...heading} />}
@@ -39,6 +39,6 @@ export default function PhoneForm() {
       <PhoneNumber />
       <Location />
       <SubmitButton />
-    </Card>
+    </Paper>
   );
 }
