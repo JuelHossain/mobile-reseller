@@ -42,6 +42,7 @@ export default function MyPhones() {
             ),
           }),
         icon: IconPencil,
+        props: { color: "green", variant: "light" },
       },
       {
         fn: (id, title) =>
@@ -52,6 +53,7 @@ export default function MyPhones() {
             onConfirm: () => mutate(id),
           }),
         icon: IconTrash,
+        props: { color: "red", variant: "light" },
       },
     ],
   };
@@ -60,6 +62,12 @@ export default function MyPhones() {
     return (
       <Notification title="Server Side Error" icon={<IconX size={18} />} color="red">
         Please Try again later.
+      </Notification>
+    );
+  if (products?.length === 0)
+    return (
+      <Notification closeButtonProps={{ color: "red", variant: "light" }} title="Please Add A Phone">
+        You have not added any phone yet
       </Notification>
     );
   return <DataTable data={data} />;

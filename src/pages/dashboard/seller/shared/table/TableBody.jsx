@@ -20,7 +20,7 @@ export default function TableBody({ rows, selection, setSelection, actions }) {
     const normalCols = cols?.map((col) => <td key={col}>{col}</td>);
 
     const actionCol = actions?.map((item) => (
-      <ActionIcon key={Math.random()} onClick={() => item.fn(id, title)}>
+      <ActionIcon {...item.props} key={Math.random()} onClick={() => item.fn(id, title)}>
         <item.icon size={16} />
       </ActionIcon>
     ));
@@ -41,7 +41,7 @@ export default function TableBody({ rows, selection, setSelection, actions }) {
           </Group>
         </td>
         {normalCols}
-        <td className="flex gap-1">{actionCol}</td>
+        <td className="flex gap-2">{actionCol}</td>
       </tr>
     );
   });
