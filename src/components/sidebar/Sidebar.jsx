@@ -1,7 +1,7 @@
-import { Box, Card, NavLink, Text } from "@mantine/core";
+import { Box, Card, Group, NavLink, Text } from "@mantine/core";
 import { Link, useLocation } from "react-router-dom";
 
-export default function Sidebar({ navlinks, title }) {
+export default function Sidebar({ navlinks, title, extra }) {
   const { pathname } = useLocation();
   const items = navlinks.map((item) => {
     const { label, description, link } = item;
@@ -28,7 +28,10 @@ export default function Sidebar({ navlinks, title }) {
       })}
       className="w-60 p-0 py-2 h-[92hv] rounded-none "
     >
-      <Text className="font-bold p-4">{title}</Text>
+      <Group className=" p-4" justify="center">
+        <Text className="font-bold">{title}</Text>
+        {extra}
+      </Group>
       <Box> {items}</Box>
     </Card>
   );

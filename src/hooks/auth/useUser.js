@@ -21,8 +21,8 @@ const useUser = () => {
     queryFn: getUser,
   });
 
-  const { seller, admin, verified } = data || {};
+  const { seller, admin, verified, email } = data || {};
 
-  return { admin, seller, verified, user: data, userLoading, isUserError, userError, refetchUser };
+  return { email, admin, seller, verified, user: data, userLoading, isUserError, userError, refetchUser };
 };
 export default useUser;

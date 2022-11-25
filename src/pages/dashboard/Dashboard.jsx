@@ -4,6 +4,7 @@ import PrivateRoute from "../../components/auth/PrivateRoute";
 import Sidebar from "../../components/sidebar/Sidebar";
 import useUser from "../../hooks/auth/useUser";
 import useDashboardLinks from "./links/useDashboardLinks";
+import ToggleRole from "./shared/ToggleRole";
 
 export default function Dashboard() {
   const { admin, seller } = useUser();
@@ -13,7 +14,7 @@ export default function Dashboard() {
   return (
     <PrivateRoute>
       <Group className="items-start">
-        <Sidebar navlinks={links} title={title} />
+        <Sidebar navlinks={links} title={title} extra={<ToggleRole />} />
         <Outlet />
       </Group>
     </PrivateRoute>

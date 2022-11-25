@@ -19,7 +19,6 @@ export default function useToken() {
       queryClient.invalidateQueries({ queryKey: ["get-user"] });
     },
     onError: () => {
-      console.log("something wrong");
       removeToken();
     },
   });
