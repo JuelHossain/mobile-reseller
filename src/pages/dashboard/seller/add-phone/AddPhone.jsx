@@ -1,10 +1,10 @@
-import { Center } from "@mantine/core";
+import { Stack } from "@mantine/core";
 import PhoneForm from "../shared/PhoneForm";
 
 export default function AddPhone() {
   return (
-    <Center>
+    <Stack className="flex-1">
       <PhoneForm />
-    </Center>
+    </Stack>
   );
 }

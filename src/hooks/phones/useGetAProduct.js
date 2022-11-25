@@ -8,6 +8,7 @@ export default function useGetAProduct(id) {
       const { data } = await axios(`/products/${id}`);
       return data;
     },
+    enabled: !!id,
   });
   const { data: product, isLoading: productLoading, error: productError } = query;
   return { ...query, product, productLoading, productError };

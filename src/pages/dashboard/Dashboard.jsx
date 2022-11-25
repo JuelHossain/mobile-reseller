@@ -1,4 +1,4 @@
-import { Group } from "@mantine/core";
+import { Flex } from "@mantine/core";
 import { Outlet } from "react-router-dom";
 import PrivateRoute from "../../components/auth/PrivateRoute";
 import Sidebar from "../../components/sidebar/Sidebar";
@@ -13,10 +13,10 @@ export default function Dashboard() {
   const title = admin ? "Admin Dashboard" : seller ? "Seller Dashboard" : "Buyer Dashboard";
   return (
     <PrivateRoute>
-      <Group className="items-start">
+      <Flex className=" gap-4 mt-5 sm:mt-10">
         <Sidebar navlinks={links} title={title} extra={<ToggleRole />} />
         <Outlet />
-      </Group>
+      </Flex>
     </PrivateRoute>
   );
 }

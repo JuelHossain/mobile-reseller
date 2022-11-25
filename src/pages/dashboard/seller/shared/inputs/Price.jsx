@@ -1,16 +1,16 @@
 import { NumberInput } from "@mantine/core";
 import { IconMedal } from "@tabler/icons";
-import { useServiceFormContext } from "../../../context/service-form-context/serviceFormContext";
+import { usePhoneFormContext } from "../../../../../context/phone-context/phoneFormcontext";
 
 export default function Price() {
-  const { getInputProps } = useServiceFormContext();
+  const { getInputProps } = usePhoneFormContext();
 
   return (
     <NumberInput
       min={0}
       label="Service Cost"
       placeholder="Service Cost"
-      {...getInputProps("cost")}
+      {...getInputProps("price")}
       icon={<IconMedal size={18} />}
     />
   );
