@@ -4,5 +4,12 @@ import { usePhoneFormContext } from "../../../../../context/phone-context/phoneF
 export default function Name() {
   const { getInputProps } = usePhoneFormContext();
 
-  return <TextInput label="Service Name" placeholder="Service Name" {...getInputProps("name")} className="flex-1" />;
+  return (
+    <TextInput
+      label="Name"
+      placeholder="Phone Name"
+      {...getInputProps("name")}
+      className="flex-grow flex-shrink-0 basis-32"
+    />
+  );
 }

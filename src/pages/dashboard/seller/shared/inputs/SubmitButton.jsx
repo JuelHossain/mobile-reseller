@@ -1,13 +1,13 @@
 /* eslint-disable no-nested-ternary */
 import { Button, Group } from "@mantine/core";
-import { useServiceFormContext } from "../../../context/service-form-context/serviceFormContext";
+import { usePhoneFormContext } from "../../../../../context/phone-context/phoneFormcontext";
 
 export default function SubmitButton() {
-  const { loading, uploading } = useServiceFormContext();
+  const { loading } = usePhoneFormContext();
   return (
     <Group position="right">
-      <Button loading={loading || uploading} type="submit">
-        {uploading ? "Uploading File" : loading ? "Submitting Form" : "Submit"}
+      <Button loading={loading} type="submit">
+        {loading ? "Adding Phone" : "Submit"}
       </Button>
     </Group>
   );

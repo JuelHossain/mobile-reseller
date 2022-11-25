@@ -1,7 +1,10 @@
 import { ActionIcon, Menu, Stack } from "@mantine/core";
 
 import { IconMenu } from "@tabler/icons";
+import { useLocation } from "react-router-dom";
 import { useHeaderContext } from "../../../context/headerContext";
+import DashboardSidebar from "../../sidebar/DashboardSidebar";
+import ProductsSidebar from "../../sidebar/ProductsSidebar";
 import useLinks from "../nav/useLinks";
 import UserSection from "../user/UserSection";
 import NavLInk from "./NavLink";
@@ -9,8 +12,12 @@ import NavLInk from "./NavLink";
 export default function MobileLinks() {
   const { disclosure } = useHeaderContext();
   const [opened, { open, close }] = disclosure;
-  const {links} = useLinks();
+  const { links } = useLinks();
   const mobileNavs = links.map((nav) => <NavLInk key={nav.name} nav={nav} />);
+
+  const { pathname } = useLocation();
+  const inProducts = pathname.slice("1").startsWith("products");
+  const inDashboard = pathname.slice("1").startsWith("dashboard");
 
   return (
     <Menu
@@ -30,6 +37,7 @@ export default function MobileLinks() {
         <Stack>
           <UserSection mobile />
           <Stack spacing={8}>{mobileNavs}</Stack>
+          {inDashboard ? <DashboardSidebar /> : inProducts && <ProductsSidebar />}
         </Stack>
       </Menu.Dropdown>
     </Menu>

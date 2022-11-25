@@ -1,21 +1,16 @@
 import { Flex } from "@mantine/core";
 import { Outlet } from "react-router-dom";
 import PrivateRoute from "../../components/auth/PrivateRoute";
-import Sidebar from "../../components/sidebar/Sidebar";
-import useUser from "../../hooks/auth/useUser";
-import useDashboardLinks from "./links/useDashboardLinks";
-import ToggleRole from "./shared/ToggleRole";
+import DashboardSidebar from "../../components/sidebar/DashboardSidebar";
 
 export default function Dashboard() {
-  const { admin, seller } = useUser();
-  const links = useDashboardLinks();
-  // eslint-disable-next-line no-nested-ternary
-  const title = admin ? "Admin Dashboard" : seller ? "Seller Dashboard" : "Buyer Dashboard";
   return (
     <PrivateRoute>
-      <Flex className=" gap-4 mt-5 sm:mt-10">
-        <Sidebar navlinks={links} title={title} extra={<ToggleRole />} />
+      <Flex className=" gap-4 mt-5 sm:mt-10 max-w-4xl mx-auto justify-between p-4">
         <Outlet />
+        <div className="hidden md:flex ">
+          <DashboardSidebar />
+        </div>
       </Flex>
     </PrivateRoute>
   );

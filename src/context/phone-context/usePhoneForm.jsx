@@ -12,9 +12,9 @@ export default function usePhoneForm(id) {
   const { product } = useGetAProduct(id);
   const { addProduct, addingProduct, addError } = useAddProduct();
   const { updateProduct, updatingProduct, updateError } = useUpdateAProduct();
-  const [uploadImage] = useImageUpload();
+  const [uploadImage, uploading] = useImageUpload();
 
-  const loading = addingProduct || updatingProduct;
+  const loading = addingProduct || updatingProduct || uploading;
   const serverError = addError || updateError;
 
   useEffect(() => {

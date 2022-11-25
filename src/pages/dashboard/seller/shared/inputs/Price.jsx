@@ -8,10 +8,11 @@ export default function Price() {
   return (
     <NumberInput
       min={0}
-      label="Service Cost"
-      placeholder="Service Cost"
+      label="Price"
+      placeholder="Phone Price"
       {...getInputProps("price")}
       icon={<IconMedal size={18} />}
+      className="flex-grow flex-shrink-0 basis-32"
     />
   );
 }
