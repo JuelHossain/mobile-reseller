@@ -1,12 +1,13 @@
 const initialPhoneForm = {
   initialValues: {
-    name: "",
+    brand: "",
+    model: "",
     price: "",
     condition: "",
     images: [],
+    description: "",
     phoneNumber: "",
     location: "",
-    description: "",
   },
   validate: {},
 };

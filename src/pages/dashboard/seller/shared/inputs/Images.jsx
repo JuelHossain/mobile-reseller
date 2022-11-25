@@ -5,10 +5,9 @@ import { usePhoneFormContext } from "../../../../../context/phone-context/phoneF
 export default function Images() {
   const { errors, values, setFieldValue, setFieldError } = usePhoneFormContext();
 
-  
-
   const previews = values.images.map((file) => {
     const imageUrl = window.URL.createObjectURL(file);
+
     return <Image key={Math.random()} src={imageUrl} />;
   });
 
@@ -30,7 +29,7 @@ export default function Images() {
       </Dropzone>
       <p className="text-xs text-red-500">{errors.images}</p>
 
-      <SimpleGrid cols={4} mt={previews.length > 0 ? "xl" : 0}>
+      <SimpleGrid cols={4} mt={previews.length > 0 ? "xl" : 0} className={values?.images.length > 0 && "h-14"}>
         {previews}
       </SimpleGrid>
     </div>

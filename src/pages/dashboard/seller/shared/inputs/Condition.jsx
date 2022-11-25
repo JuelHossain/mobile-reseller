@@ -13,6 +13,7 @@ export default function Condition() {
         { value: "good", label: "Good" },
         { value: "excellent", label: "Excellent" },
       ]}
+      className="flex-grow flex-shrink-0 basis-32"
     />
   );
 }
