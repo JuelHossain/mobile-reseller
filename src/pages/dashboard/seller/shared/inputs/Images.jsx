@@ -43,7 +43,7 @@ export default function Images() {
           {selected ? previews : placeholder}
         </div>
       </Dropzone>
-      <p className="text-xs text-red-500">{errors.images}</p>
+      <p className="text-xs m-0 mt-1 text-red-500">{errors.images}</p>
     </div>
   );
 }

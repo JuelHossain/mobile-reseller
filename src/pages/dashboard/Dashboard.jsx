@@ -6,9 +6,9 @@ import DashboardSidebar from "../../components/sidebar/DashboardSidebar";
 export default function Dashboard() {
   return (
     <PrivateRoute>
-      <Flex className=" gap-4 mt-5 sm:mt-10 max-w-4xl mx-auto justify-between p-4">
+      <Flex className=" gap-4 my-5 sm:my-10 max-w-4xl mx-auto justify-between p-4">
         <Outlet />
-        <div className="hidden md:flex ">
+        <div className="hidden md:flex sticky top-[8vh]">
           <DashboardSidebar />
         </div>
       </Flex>

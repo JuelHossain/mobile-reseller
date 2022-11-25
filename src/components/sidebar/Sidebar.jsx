@@ -31,7 +31,7 @@ export default function Sidebar({ navlinks, title, extra }) {
       sx={(theme) => ({
         borderLeft: theme.colorScheme === "light" && `1px solid ${theme.colors.gray[3]}`,
       })}
-      className="w-60 p-0 py-2 h-[92hv] rounded-none  "
+      className="w-60 p-0 py-2 rounded-none  "
     >
       <Group className=" p-4" justify="center">
         <Text className="font-bold">{title}</Text>
