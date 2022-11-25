@@ -10,41 +10,44 @@ import categories from "./pages/products/components/categories";
 import MobilePhones from "./pages/products/components/MobilePhones";
 import Products from "./pages/products/Products";
 
-const mobilePhones = categories.map((item) => {
-  const { label, link } = item;
-  if (label === "budget") return { index: true, element: <MobilePhones {...item} /> };
-  return { path: link, element: <MobilePhones {...item} /> };
-});
+const useRouter = () => {
+  const mobilePhones = categories.map((item) => {
+    const { label, link } = item;
+    if (label === "budget") return { index: true, element: <MobilePhones {...item} /> };
+    return { path: link, element: <MobilePhones {...item} /> };
+  });
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    errorElement: <ErrorPage />,
-    children: [
-      {
-        index: true,
-        element: <Home />,
-      },
-      {
-        path: "products",
-        element: <Products />,
-        children: mobilePhones,
-      },
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <App />,
+      errorElement: <ErrorPage />,
+      children: [
+        {
+          index: true,
+          element: <Home />,
+        },
+        {
+          path: "products",
+          element: <Products />,
+          children: mobilePhones,
+        },
 
-      {
-        path: "dashboard",
-        element: <Dashboard />,
-      },
-      {
-        path: "blog",
-        element: <Blog />,
-      },
-    ],
-  },
-  {
-    path: "*",
-    element: <NotFound />,
-  },
-]);
-export default router;
+        {
+          path: "dashboard",
+          element: <Dashboard />,
+        },
+        {
+          path: "blog",
+          element: <Blog />,
+        },
+      ],
+    },
+    {
+      path: "*",
+      element: <NotFound />,
+    },
+  ]);
+  return router;
+};
+export default useRouter;

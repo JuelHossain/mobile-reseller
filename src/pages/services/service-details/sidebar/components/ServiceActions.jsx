@@ -9,7 +9,7 @@ import DeleteService from "./DeleteService";
 export default function ServiceActions() {
   const { updateServiceModal } = useModalContext();
   const [user] = useAuthState(auth);
-  const [, { open }] = updateServiceModal;
+  const [,{ open }] = updateServiceModal;
   return (
     user && (
       <Group className="w-full">

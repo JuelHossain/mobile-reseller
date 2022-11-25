@@ -12,7 +12,7 @@ const useUser = () => {
   };
   const {
     data,
-    isLoading,
+    isLoading: userLoading,
     isError: isUserError,
     error: userError,
     refetch: refetchUser,
@@ -21,13 +21,8 @@ const useUser = () => {
     queryFn: getUser,
   });
 
-  const { role: userRole } = data || {};
+  const { seller, admin } = data || {};
 
-  const admin = userRole === "admin";
-  const buyer = userRole === "buyer";
-  const seller = userRole === "seller";
-  const userLoading = isLoading;
-
-  return { admin, buyer, seller, user: data, userLoading, isUserError, userError, refetchUser };
+  return { admin, seller, user: data, userLoading, isUserError, userError, refetchUser };
 };
 export default useUser;
