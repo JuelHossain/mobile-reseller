@@ -6,7 +6,7 @@ const initialPhoneForm = {
     model: "",
     price: "",
     condition: "",
-    images: [],
+    imageLinks: [],
     description: "",
     phoneNumber: "",
     location: "",
@@ -21,7 +21,7 @@ const initialPhoneForm = {
 
     phoneNumber: (value) => (/(^(\+88|0088)?(01){1}[3456789]{1}(\d){8})$/.test(value) ? null : "Invalid Phone Number"),
 
-    images: (value) => (value.length === 0 ? "Images are required" : null),
+    imageLinks: (value) => (value.length === 0 ? "Images are required" : null),
   },
 };
 export default initialPhoneForm;

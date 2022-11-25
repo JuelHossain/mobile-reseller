@@ -7,32 +7,22 @@ import { closeAllModals } from "@mantine/modals";
 import useUser from "../../hooks/auth/useUser";
 import useAddProduct from "../../hooks/phones/useAddProduct";
 import useUpdateAProduct from "../../hooks/phones/useUpdateAProduct";
-import useImageUpload from "../../hooks/shared/useImageUpload";
 
-export default function useFormHandler({ onSubmit, reset, values }, id) {
+export default function useFormHandler({ onSubmit, reset }, id) {
   const { email } = useUser();
-  const { addProductAsync, addingProduct, addError } = useAddProduct();
-  const { updateProductAsync, updatingProduct, updateError } = useUpdateAProduct();
-  const [uploadImage, uploading] = useImageUpload();
+  const { addProduct, addingProduct, addError } = useAddProduct();
+  const { updateProduct, updatingProduct, updateError } = useUpdateAProduct();
 
-  const loading = addingProduct || updatingProduct || uploading;
+  const loading = addingProduct || updatingProduct;
   const serverError = addError || updateError;
 
   const submitHandler = (e) => {
-    const handler = async (data) => {
-      const imageLinks = [];
-      for (const file of values?.images) {
-        const imageLink = await uploadImage(file);
-        imageLinks.push(imageLink);
-      }
-
+    const handler = (data) => {
       if (data?.exist) {
-        const { exist, images, ...patch } = data;
-        await updateProductAsync({ patch: { ...patch, imageLinks }, id });
+        const { exist, ...patch } = data;
+        updateProduct({ patch, id });
         closeAllModals();
       } else {
-        const { images, ...restData } = data || {};
-
         let cat = "";
         switch (true) {
           case data?.price < 10000:
@@ -49,9 +39,9 @@ export default function useFormHandler({ onSubmit, reset, values }, id) {
             break;
         }
 
-        const newPhone = { ...restData, imageLinks, createdAt: new Date(), createdBy: email, cat };
+        const newPhone = { ...data, createdAt: new Date(), createdBy: email, cat };
 
-        await addProductAsync(newPhone, {
+        addProduct(newPhone, {
           onSuccess: () => {
             reset();
           },

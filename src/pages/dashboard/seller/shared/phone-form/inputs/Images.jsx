@@ -1,15 +1,15 @@
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable no-await-in-loop */
 import { Text } from "@mantine/core";
 import { Dropzone, IMAGE_MIME_TYPE } from "@mantine/dropzone";
 import { usePhoneFormContext } from "../../../../../../context/phone-context/phoneFormcontext";
 
 export default function Images() {
-  const { errors, values, setFieldValue, setFieldError } = usePhoneFormContext();
+  const { errors, values, setFieldError, onDrop, uploading } = usePhoneFormContext();
 
-  const previews = values.images.map((file) => {
-    const imageUrl = window.URL.createObjectURL(file);
-
-    return <img alt="preview" className="w-full h-full object-cover" key={Math.random()} src={imageUrl} />;
-  });
+  const previews = values?.imageLinks?.map((link) => (
+    <img alt="preview" className="w-full h-full object-cover" key={Math.random()} src={link} />
+  ));
 
   const placeholder = [0, 1, 2, 3].map((n) => (
     <img
@@ -25,10 +25,9 @@ export default function Images() {
   return (
     <div>
       <Dropzone
+        loading={uploading}
         accept={IMAGE_MIME_TYPE}
-        onDrop={(files) => {
-          setFieldValue("images", files);
-        }}
+        onDrop={onDrop}
         onReject={(files) => {
           if (files.length > 4) {
             setFieldError("images", "Maximum 4 Files Can be added");
@@ -37,7 +36,7 @@ export default function Images() {
         maxFiles={4}
       >
         <Text className="mb-2" align="center">
-          {selected ? "Selected" : "Select"} Images Of Phone
+          {selected ? "Uploaded" : "Upload"} Images Of Phone
         </Text>
         <div className="duration-500 grid grid-cols-4 gap-2 h-6 xs:h-9 md:h-12 lg:h-16 overflow-hidden">
           {selected ? previews : placeholder}
