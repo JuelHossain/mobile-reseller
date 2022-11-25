@@ -1,21 +1,13 @@
 import { useForm } from "@mantine/form";
 import { useEffect } from "react";
-import useAddProduct from "../../hooks/phones/useAddProduct";
 import useGetAProduct from "../../hooks/phones/useGetAProduct";
-import useUpdateAProduct from "../../hooks/phones/useUpdateAProduct";
-import useImageUpload from "../../hooks/shared/useImageUpload";
 import initialPhoneForm from "./initialPhoneForm";
+import useFormHandler from "./useFormHandler";
 
 export default function usePhoneForm(id) {
   const form = useForm(initialPhoneForm);
-  const { setValues, onSubmit } = form || {};
+  const { setValues } = form || {};
   const { product } = useGetAProduct(id);
-  const { addProduct, addingProduct, addError } = useAddProduct();
-  const { updateProduct, updatingProduct, updateError } = useUpdateAProduct();
-  const [uploadImage, uploading] = useImageUpload();
-
-  const loading = addingProduct || updatingProduct || uploading;
-  const serverError = addError || updateError;
 
   useEffect(() => {
     if (product) {
@@ -24,24 +16,7 @@ export default function usePhoneForm(id) {
     }
   }, [product, setValues]);
 
-  const submitHandler = (e) => {
-    const handler = (data) => {
-      const imageLinks = data?.images?.map(async (file) => {
-        console.log("image uploading");
-        const imageLink = await uploadImage(file);
-        return imageLink;
-      });
-      console.log("image upload finish");
-      if (data?.exist) {
-        const { exist, images, ...patch } = data;
-        updateProduct({ patch: { ...patch, imageLinks }, id });
-      }
-      const { images, ...restData } = data || {};
-      addProduct({ ...restData, imageLinks });
-    };
-
-    onSubmit(handler)(e);
-  };
+  const { submitHandler, loading, serverError } = useFormHandler(form, id);
 
   return { ...form, submitHandler, loading, serverError };
 }
