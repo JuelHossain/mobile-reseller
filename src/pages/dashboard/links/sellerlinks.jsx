@@ -1,8 +1,8 @@
 import { IconBrandProducthunt, IconBuildingSkyscraper, IconSelect } from "@tabler/icons";
 
-import AddPhone from "../seller/add-phone/AddPhone";
-import ManageAds from "../seller/manage-ads/ManageAds";
-import MyPhones from "../seller/my-phones/MyPhones";
+import AddPhone from "../seller/AddPhone";
+import ManageAds from "../seller/ManageAds";
+import MyPhones from "../seller/MyPhones";
 
 const sellerLinks = [
   {

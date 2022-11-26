@@ -35,13 +35,13 @@ const useStyles = createStyles((theme, _params, getRef) => ({
   },
 }));
 
-export default function PhoneCard({ imageLinks, brand, model, price, description, condition, _id }) {
+export default function PhoneCard({ product }) {
+  const { imageLinks, brand, model, price, description, condition, _id } = product;
   const { classes } = useStyles();
   const { addToWishList, updatingUser } = useUpdateCurrentUser();
   const { wishlist } = useUserContext();
-  const isWishlist = Array.isArray(wishlist);
-  const matched = isWishlist && wishlist.filter((listedId) => listedId === _id);
-  const wishListed = Array.isArray(matched) && matched.length > 0;
+  const matched = wishlist?.filter((p) => p?._id === _id);
+  const wishListed = matched?.length > 0;
 
   const slides = imageLinks?.map((image) => (
     <Carousel.Slide key={image}>
@@ -96,7 +96,7 @@ export default function PhoneCard({ imageLinks, brand, model, price, description
           <Group>
             <ActionIcon
               loading={updatingUser}
-              onClick={() => addToWishList(_id)}
+              onClick={() => addToWishList(product)}
               radius="md"
               variant="light"
               color={wishListed && "red"}

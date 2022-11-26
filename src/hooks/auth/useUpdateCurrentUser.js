@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import { useUserContext } from "../../context/userContext";
 import useUpdateUser from "./useUpdateUser";
 
@@ -5,7 +6,6 @@ export default function useUpdateCurrentUser() {
   const { updateUser, updatingUser, updatingUserError } = useUpdateUser();
   const { email, seller, wishlist } = useUserContext();
   const isWishList = Array.isArray(wishlist);
-  console.log(wishlist);
 
   const switchToSeller = () => updateUser({ patch: { seller: true, admin: false }, email });
 
@@ -14,22 +14,24 @@ export default function useUpdateCurrentUser() {
   const switchToAdmin = () => updateUser({ patch: { seller: false, admin: true }, email });
 
   const toggleSeller = () => updateUser({ patch: { seller: !seller }, email });
+
   const removeFromWishList = (id) => {
-    const removedList = wishlist.filter((listedId) => listedId !== id);
+    const removedList = wishlist.filter((p) => p?._id !== id);
     updateUser({ patch: { wishlist: removedList }, email });
   };
 
-  const addToWishList = (id) => {
+  const addToWishList = (product) => {
+    const { _id: id } = product;
     if (isWishList) {
-      const matchedList = wishlist.filter((listedId) => listedId === id);
+      const matchedList = wishlist.filter((p) => p?._id === id);
       const exist = matchedList.length > 0;
       if (exist) {
         removeFromWishList(id);
       } else {
-        updateUser({ patch: { wishlist: [...wishlist, id] }, email });
+        updateUser({ patch: { wishlist: [...wishlist, product] }, email });
       }
     } else {
-      updateUser({ patch: { wishlist: [id] }, email });
+      updateUser({ patch: { wishlist: [product] }, email });
     }
   };
 

@@ -41,7 +41,7 @@ export default function useBookingForm(id) {
         buyer: {
           email: buyerEmail,
           name: buyerName,
-          phoneNumber: buyerNumber,
+          phoneNumber: buyerNumber || "",
           address: buyerAddress || { holding: "", road: "", area: "", district: "", postal: "" },
         },
       });

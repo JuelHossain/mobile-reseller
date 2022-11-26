@@ -5,11 +5,11 @@ import {
   IconSelect,
   IconSoccerField,
 } from "@tabler/icons";
-import AllBuyer from "../admin/all-buyer/AllBuyer";
-import AllOrders from "../admin/all-orders/AllOrders";
-import AllProducts from "../admin/all-products/AllProducts";
-import AllSeller from "../admin/all-seller/AllSeller";
-import SoldProducts from "../admin/sold-prodcuts/SoldProducts";
+import AllBuyer from "../admin/AllBuyer";
+import AllOrders from "../admin/AllOrders";
+import AllProducts from "../admin/AllProducts";
+import AllSeller from "../admin/AllSeller";
+import SoldProducts from "../admin/SoldProducts";
 
 const adminLinks = [
   {

@@ -1,6 +1,7 @@
 import { IconUser } from "@tabler/icons";
+import Profile from "../../../context/profile-context/Profile";
 import { useUserContext } from "../../../context/userContext";
-import Profile from "../shared/profile/Profile";
+
 import adminLinks from "./adminlinks";
 import buyerLinks from "./buyerlinks";
 import sellerLinks from "./sellerlinks";

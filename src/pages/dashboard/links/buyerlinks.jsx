@@ -1,6 +1,6 @@
 import { IconBuildingSkyscraper, IconSelect } from "@tabler/icons";
-import MyOrders from "../buyer/my-orders/MyOrders";
-import MyWishlist from "../buyer/my-wishlist/MyWishlist";
+import MyOrders from "../buyer/MyOrders";
+import MyWishlist from "../buyer/MyWishlist";
 
 const buyerLinks = [
   {

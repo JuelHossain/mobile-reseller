@@ -7,8 +7,6 @@ export default function useGetUsers(options = {}) {
     return queries;
   }, "");
 
-  console.log(queryOption);
-
   const query = useQuery({
     queryKey: ["get-users", ...Object.values(options)],
     queryFn: async () => {
