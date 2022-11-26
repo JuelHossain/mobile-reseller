@@ -2,10 +2,10 @@ import { Button, Card, Center, LoadingOverlay, ThemeIcon, Title } from "@mantine
 import { IconLock } from "@tabler/icons";
 import { useEffect } from "react";
 import { useModalContext } from "../../context/modalContext";
-import useUser from "../../hooks/auth/useUser";
+import { useUserContext } from "../../context/userContext";
 
 export default function PrivateRoute({ children }) {
-  const { user, userLoading } = useUser();
+  const { user, userLoading } = useUserContext();
   const { authModal } = useModalContext();
   const [, { open, close }] = authModal;
 

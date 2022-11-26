@@ -1,10 +1,10 @@
 import { Switch } from "@mantine/core";
 import { useNavigate } from "react-router-dom";
+import { useUserContext } from "../../../context/userContext";
 import useUpdateUser from "../../../hooks/auth/useUpdateUser";
-import useUser from "../../../hooks/auth/useUser";
 
 export default function ToggleRole() {
-  const { admin, seller } = useUser();
+  const { admin, seller } = useUserContext();
   const { toggleSeller } = useUpdateUser();
   const navigate = useNavigate();
 

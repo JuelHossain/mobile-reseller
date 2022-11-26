@@ -2,7 +2,7 @@ import { LoadingOverlay } from "@mantine/core";
 import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import Blog from "./components/blog/Blog";
-import useUser from "./hooks/auth/useUser";
+import { useUserContext } from "./context/userContext";
 import Dashboard from "./pages/dashboard/Dashboard";
 import useDashboardLinks from "./pages/dashboard/links/useDashboardLinks";
 
@@ -14,7 +14,7 @@ import MobilePhones from "./pages/products/components/MobilePhones";
 import Products from "./pages/products/Products";
 
 const useRouter = () => {
-  const { userLoading } = useUser();
+  const { userLoading } = useUserContext();
   const dashboardLinks = useDashboardLinks();
   const mobilePhones = categories.map((item, index) => {
     const { link } = item;

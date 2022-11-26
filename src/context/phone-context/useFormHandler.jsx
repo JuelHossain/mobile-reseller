@@ -4,12 +4,12 @@
 /* eslint-disable no-unsafe-optional-chaining */
 
 import { closeAllModals } from "@mantine/modals";
-import useUser from "../../hooks/auth/useUser";
 import useAddProduct from "../../hooks/phones/useAddProduct";
 import useUpdateAProduct from "../../hooks/phones/useUpdateAProduct";
+import { useUserContext } from "../userContext";
 
 export default function useFormHandler({ onSubmit, reset }, id) {
-  const { email } = useUser();
+  const { email } = useUserContext();
   const { addProduct, addingProduct, addError } = useAddProduct();
   const { updateProduct, updatingProduct, updateError } = useUpdateAProduct();
 

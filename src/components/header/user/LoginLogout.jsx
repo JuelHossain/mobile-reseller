@@ -3,13 +3,13 @@ import { Button, Group, LoadingOverlay } from "@mantine/core";
 import { useAuthContext } from "../../../context/authContext/authContext";
 import { useHeaderContext } from "../../../context/headerContext";
 import { useModalContext } from "../../../context/modalContext";
-import useUser from "../../../hooks/auth/useUser";
+import { useUserContext } from "../../../context/userContext";
 import DashboardButton from "./DashboardButton";
 import LogoutButton from "./LogoutButton";
 import UserButton from "./UserButton";
 
 export default function LoginLogout() {
-  const { user, userLoading } = useUser();
+  const { user, userLoading } = useUserContext();
   const { loading } = useAuthContext();
   const { disclosure } = useHeaderContext();
   const [, { close: closeMenu }] = disclosure;

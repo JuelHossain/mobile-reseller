@@ -23,7 +23,6 @@ export default function PhoneForm() {
       onSubmit={submitHandler}
       component="form"
       className={`max-w-lg flex flex-col justify-center gap-4 w-full ${!exist ? "p-4" : "pt-2"}`}
-      withBorder={!exist}
     >
       {!exist && <Heading {...heading} />}
       <Group>

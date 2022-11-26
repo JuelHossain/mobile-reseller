@@ -1,15 +1,15 @@
 import { IconUser } from "@tabler/icons";
-import useUser from "../../../hooks/auth/useUser";
+import { useUserContext } from "../../../context/userContext";
 import Profile from "../shared/profile/Profile";
 import adminLinks from "./adminlinks";
 import buyerLinks from "./buyerlinks";
 import sellerLinks from "./sellerlinks";
 
 export default function useDashboardLinks() {
-  const { admin, seller } = useUser();
+  const { admin, seller } = useUserContext();
   let links = buyerLinks;
   if (admin) links = adminLinks;
-  if (seller) links = sellerLinks;
+  else if (seller) links = sellerLinks;
   return [
     {
       label: "Profile",

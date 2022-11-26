@@ -1,6 +1,6 @@
 import { Avatar, createStyles, Group, Text, UnstyledButton } from "@mantine/core";
 import { IconChevronRight } from "@tabler/icons";
-import useUser from "../../../hooks/auth/useUser";
+import { useUserContext } from "../../../context/userContext";
 
 const useStyles = createStyles((theme) => ({
   user: {
@@ -17,7 +17,7 @@ const useStyles = createStyles((theme) => ({
 
 export default function UserPreview() {
   const { classes } = useStyles();
-  const { user } = useUser();
+  const { user } = useUserContext();
   const { photoURL, displayName, email } = user ?? {};
 
   return (

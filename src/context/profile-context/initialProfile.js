@@ -13,7 +13,13 @@ const initialProfile = {
   },
   validate: {
     displayName: required("displayName"),
-    address: required("address"),
+    address: {
+      holding: required("holding"),
+      road: required("road"),
+      area: required("area"),
+      district: required("district"),
+      postal: required("postal"),
+    },
     photoURL: required("photoURL"),
     email: (val) => (/^\S+@\S+$/.test(val) ? null : "Invalid email"),
     phoneNumber: (value) => (/(^(\+88|0088)?(01){1}[3456789]{1}(\d){8})$/.test(value) ? null : "Invalid Phone Number"),

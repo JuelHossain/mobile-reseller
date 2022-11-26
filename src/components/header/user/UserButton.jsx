@@ -1,11 +1,11 @@
 import { ActionIcon, Avatar, HoverCard } from "@mantine/core";
 
 import { IconUser } from "@tabler/icons";
-import useUser from "../../../hooks/auth/useUser";
+import { useUserContext } from "../../../context/userContext";
 import UserPreview from "./UserPreview";
 
 export default function UserButton() {
-  const { user } = useUser();
+  const { user } = useUserContext();
 
   return (
     <HoverCard>

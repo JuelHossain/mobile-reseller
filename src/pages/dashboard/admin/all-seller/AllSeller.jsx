@@ -1,7 +1,5 @@
-export default function AllSeller (){
-  return (
-    <div>
-      this is AllSeller
-    </div>
-  )
-};
+import UsersTable from "../shared/UsersTable";
+
+export default function AllSeller() {
+  return <UsersTable options={{ seller: true }} />;
+}

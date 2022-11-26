@@ -10,6 +10,7 @@ const useUser = () => {
     const { data } = await axios(`users/${user?.email}`);
     return data;
   };
+
   const {
     data,
     isLoading: userLoading,
@@ -21,8 +22,20 @@ const useUser = () => {
     queryFn: getUser,
   });
 
-  const { seller, admin, verified, email } = data || {};
+  const { seller, admin, verified, email, phoneNumber, address } = data || {};
 
-  return { email, admin, seller, verified, user: data, userLoading, isUserError, userError, refetchUser };
+  return {
+    email,
+    admin,
+    seller,
+    verified,
+    user: data,
+    userLoading,
+    isUserError,
+    userError,
+    refetchUser,
+    phoneNumber,
+    address,
+  };
 };
 export default useUser;

@@ -2,13 +2,13 @@ import { Modal, Text, Title } from "@mantine/core";
 import { useEffect } from "react";
 import { useAuthContext } from "../../context/authContext/authContext";
 import { useModalContext } from "../../context/modalContext";
-import useUser from "../../hooks/auth/useUser";
+import { useUserContext } from "../../context/userContext";
 import AuthPage from "./AuthPage";
 
 export default function AuthModal() {
   const { authModal } = useModalContext();
   const { type, toggleType } = useAuthContext();
-  const { user } = useUser();
+  const { user } = useUserContext();
 
   const [opened, { close }] = authModal;
 

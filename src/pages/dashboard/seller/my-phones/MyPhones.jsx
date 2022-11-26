@@ -2,14 +2,14 @@ import { LoadingOverlay, Notification, Text, Title } from "@mantine/core";
 import { openConfirmModal, openModal } from "@mantine/modals";
 import { IconDeviceMobileOff, IconPencil, IconTrash, IconX } from "@tabler/icons";
 import { PhoneFormProvider } from "../../../../context/phone-context/phoneFormcontext";
-import useUser from "../../../../hooks/auth/useUser";
+import { useUserContext } from "../../../../context/userContext";
 import useDeleteAProduct from "../../../../hooks/phones/useDeleteAProduct";
 import useGetProducts from "../../../../hooks/phones/useGetProducts";
 import PhoneForm from "../shared/phone-form/PhoneForm";
 import DataTable from "../shared/table/DataTable";
 
 export default function MyPhones() {
-  const { email } = useUser();
+  const { email } = useUserContext();
   const { products, productsLoading, productsError } = useGetProducts({ email });
   const { mutate } = useDeleteAProduct();
   const data = {
