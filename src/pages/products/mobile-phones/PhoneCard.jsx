@@ -1,7 +1,8 @@
 import { Carousel } from "@mantine/carousel";
-import { Button, Card, createStyles, Flex, Group, Image, Text } from "@mantine/core";
-import { IconStar } from "@tabler/icons";
+import { ActionIcon, Button, Card, createStyles, Flex, Group, Image, Text } from "@mantine/core";
+import { IconHeart, IconStar } from "@tabler/icons";
 import { Link } from "react-router-dom";
+import useUpdateCurrentUser from "../../../hooks/auth/useUpdateCurrentUser";
 
 const useStyles = createStyles((theme, _params, getRef) => ({
   price: {
@@ -35,6 +36,7 @@ const useStyles = createStyles((theme, _params, getRef) => ({
 
 export default function PhoneCard({ imageLinks, brand, model, price, description, condition, _id }) {
   const { classes } = useStyles();
+  const { addToWishList, updatingUser } = useUpdateCurrentUser();
 
   const slides = imageLinks?.map((image) => (
     <Carousel.Slide key={image}>
@@ -86,9 +88,20 @@ export default function PhoneCard({ imageLinks, brand, model, price, description
             </Text>
           </div>
 
-          <Button component={Link} to={`/products/booking/${_id}`} radius="md">
-            Book now
-          </Button>
+          <Group>
+            <ActionIcon
+              loading={updatingUser}
+              onClick={() => addToWishList(_id)}
+              radius="md"
+              variant="light"
+              color="red"
+            >
+              <IconHeart size={16} />
+            </ActionIcon>
+            <Button size="xs" component={Link} to={`/products/booking/${_id}`} radius="md">
+              Book now
+            </Button>
+          </Group>
         </Group>
       </Flex>
     </Card>

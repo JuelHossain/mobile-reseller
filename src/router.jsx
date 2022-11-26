@@ -13,6 +13,7 @@ import BookingPage from "./pages/products/bookings/BookingPage";
 import SuccessPage from "./pages/products/bookings/pages/SuccessPage";
 import categories from "./pages/products/components/categories";
 import MobilePhones from "./pages/products/mobile-phones/MobilePhones";
+import Payments from "./pages/products/payments/Payments";
 import Products from "./pages/products/Products";
 
 const useRouter = () => {
@@ -46,6 +47,7 @@ const useRouter = () => {
 
         { path: "products/booking/:id", element: <BookingPage /> },
         { path: "booking/success", element: <SuccessPage /> },
+        { path: "payment/:id", element: <Payments /> },
         {
           path: "dashboard",
           element: <Dashboard />,

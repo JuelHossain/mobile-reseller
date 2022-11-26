@@ -12,7 +12,7 @@ export default function useGetAUser(em) {
 
   const { data: user, isLoading: userLoading, error: userError, refetch: refetchUser } = query;
 
-  const { seller, admin, verified, email, phoneNumber, address } = user || {};
+  const { seller, admin, verified, email, phoneNumber, address, wishlist } = user || {};
 
   return {
     email,
@@ -25,5 +25,6 @@ export default function useGetAUser(em) {
     refetchUser,
     phoneNumber,
     address,
+    wishlist,
   };
 }
