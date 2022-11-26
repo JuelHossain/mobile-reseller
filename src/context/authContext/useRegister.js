@@ -20,7 +20,7 @@ export default function useRegister() {
 
       await sendEmailVerification(user);
 
-      const url = await upload(photo, user);
+      const url = await upload(photo, user?.uid);
 
       await updateProfile(user, { displayName: name, photoURL: url });
 

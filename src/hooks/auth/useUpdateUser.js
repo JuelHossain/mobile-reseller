@@ -33,7 +33,12 @@ export default function useUpdateUser() {
     },
   });
 
-  const { mutate: updateUser, mutateAsync: updateUserAsync, isLoading: updatingUser } = mutation;
+  const {
+    mutate: updateUser,
+    mutateAsync: updateUserAsync,
+    isLoading: updatingUser,
+    error: updatingUserError,
+  } = mutation;
 
   const switchToSeller = () => updateUser({ seller: true, admin: false });
   const switchToBuyer = () => updateUser({ seller: false, admin: false });
@@ -45,6 +50,7 @@ export default function useUpdateUser() {
     updateUser,
     updateUserAsync,
     updatingUser,
+    updatingUserError,
     switchToAdmin,
     switchToBuyer,
     switchToSeller,
