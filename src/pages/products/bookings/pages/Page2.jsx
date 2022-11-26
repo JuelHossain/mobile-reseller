@@ -4,7 +4,6 @@ import { useBookingFormContext } from "../../../../context/booking-context/booki
 export default function Page2() {
   const { getInputProps, values } = useBookingFormContext();
   const { buyer, seller, ...all } = values || {};
-  console.log(values);
 
   const sellerInputs = Object.keys(seller).map((key) => (
     <TextInput

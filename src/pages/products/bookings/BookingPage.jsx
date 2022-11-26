@@ -7,7 +7,7 @@ export default function BookingPage() {
 
   return (
     <BookingFormProvider id={id}>
-      <ProductDetails />;
+      <ProductDetails />
     </BookingFormProvider>
   );
 }

@@ -16,11 +16,10 @@ export default function useBookingForm(id) {
 
   const { user: seller, userLoading: sellerLoading, userError: sellerError } = useGetAUser(product?.createdBy);
   const { user: buyer, userLoading: buyerLoading, userError: buyerError } = useUserContext();
-  console.log(product?.createdBy);
-  const { submitHandler } = useBookingHandler(form);
+  const { submitHandler, submitting, submitError } = useBookingHandler(form, id);
 
-  const loading = productLoading || sellerLoading || buyerLoading;
-  const serverError = productError || sellerError || buyerError;
+  const loading = productLoading || sellerLoading || buyerLoading || submitting;
+  const serverError = productError || sellerError || buyerError || submitError;
 
   useEffect(() => {
     if (product && seller && buyer) {
@@ -43,12 +42,8 @@ export default function useBookingForm(id) {
           email: buyerEmail,
           name: buyerName,
           phoneNumber: buyerNumber,
-          address: buyerAddress || { holding: "", road: "", district: "", postal: "", area: "" },
+          address: buyerAddress || { holding: "", road: "", area: "", district: "", postal: "" },
         },
-        bookedBy: buyerEmail,
-        bookedAt: new Date(),
-        productId: id,
-        paid: false,
       });
     }
   }, [product, buyer, seller, id, setValues]);

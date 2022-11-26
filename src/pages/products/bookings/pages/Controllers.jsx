@@ -6,7 +6,7 @@ import { useBookingFormContext } from "../../../../context/booking-context/booki
 
 export default function Controllers(props) {
   const { showNext, showPrev, prev, next, showConfirm, pageIndex } = props;
-  const { submitHandler, errors } = useBookingFormContext();
+  const { submitHandler, errors,loading } = useBookingFormContext();
   const isErrorInForm = Object.keys(errors).length > 0;
   return (
     <Group position="right" className="p-4">
@@ -17,6 +17,7 @@ export default function Controllers(props) {
       )}
       {showNext && (
         <Button
+          loading={loading}
           onClick={
             isErrorInForm && pageIndex > 1
               ? () => showNotification({ title: "Please Fill the form Please" })
