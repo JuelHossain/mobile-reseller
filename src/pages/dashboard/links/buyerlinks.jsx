@@ -5,7 +5,7 @@ import MyWishlist from "../buyer/my-wishlist/MyWishlist";
 const buyerLinks = [
   {
     label: "My Orders",
-    link: "/dashboard",
+    link: "/dashboard/my-orders",
     description: "Manage Your Orders",
     icon: IconSelect,
     element: <MyOrders />,

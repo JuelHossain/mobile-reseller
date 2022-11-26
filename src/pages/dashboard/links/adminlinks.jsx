@@ -14,7 +14,7 @@ import SoldProducts from "../admin/sold-prodcuts/SoldProducts";
 const adminLinks = [
   {
     label: "All Seller",
-    link: "/dashboard",
+    link: "/dashboard/all-seller",
     description: "Manage All Seller",
     icon: IconSelect,
     element: <AllSeller />,

@@ -7,7 +7,7 @@ import MyPhones from "../seller/my-phones/MyPhones";
 const sellerLinks = [
   {
     label: "Add Phone",
-    link: "/dashboard",
+    link: "/dashboard/add-phone",
     description: "Sell Your Phone",
     icon: IconSelect,
     element: <AddPhone />,
