@@ -14,7 +14,12 @@ export default function useAddOrder() {
     },
   });
 
-  const { mutate: AddOrder, mutateAsync: AddOrderAsync, isLoading: addingOrder, error: addError } = mutation || {};
+  const {
+    mutate: addOrder,
+    mutateAsync: addOrderAsync,
+    isLoading: addingOrder,
+    error: addingOrderError,
+  } = mutation || {};
 
-  return { ...mutation, AddOrder, AddOrderAsync, addingOrder, addError };
+  return { ...mutation, addOrder, addOrderAsync, addingOrder, addingOrderError };
 }

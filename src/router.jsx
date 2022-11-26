@@ -10,6 +10,7 @@ import ErrorPage from "./pages/errors/ErrorPage";
 import NotFound from "./pages/errors/NotFound";
 import Home from "./pages/home/Home";
 import BookingPage from "./pages/products/bookings/BookingPage";
+import SuccessPage from "./pages/products/bookings/pages/SuccessPage";
 import categories from "./pages/products/components/categories";
 import MobilePhones from "./pages/products/mobile-phones/MobilePhones";
 import Products from "./pages/products/Products";
@@ -42,8 +43,9 @@ const useRouter = () => {
           element: <Products />,
           children: mobilePhones,
         },
-        { path: "products/booking/:id", element: <BookingPage /> },
 
+        { path: "products/booking/:id", element: <BookingPage /> },
+        { path: "booking/success", element: <SuccessPage /> },
         {
           path: "dashboard",
           element: <Dashboard />,
