@@ -1,4 +1,3 @@
-import { showNotification } from "@mantine/notifications";
 import { useUserContext } from "../../context/userContext";
 import useUpdateUser from "./useUpdateUser";
 
@@ -15,12 +14,17 @@ export default function useUpdateCurrentUser() {
   const switchToAdmin = () => updateUser({ patch: { seller: false, admin: true }, email });
 
   const toggleSeller = () => updateUser({ patch: { seller: !seller }, email });
+  const removeFromWishList = (id) => {
+    const removedList = wishlist.filter((listedId) => listedId !== id);
+    updateUser({ patch: { wishlist: removedList }, email });
+  };
+
   const addToWishList = (id) => {
     if (isWishList) {
       const matchedList = wishlist.filter((listedId) => listedId === id);
       const exist = matchedList.length > 0;
       if (exist) {
-        showNotification({ title: "Already WishListed" });
+        removeFromWishList(id);
       } else {
         updateUser({ patch: { wishlist: [...wishlist, id] }, email });
       }
@@ -37,5 +41,6 @@ export default function useUpdateCurrentUser() {
     updatingUser,
     updatingUserError,
     addToWishList,
+    removeFromWishList,
   };
 }

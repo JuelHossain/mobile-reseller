@@ -2,6 +2,7 @@ import { Carousel } from "@mantine/carousel";
 import { ActionIcon, Button, Card, createStyles, Flex, Group, Image, Text } from "@mantine/core";
 import { IconHeart, IconStar } from "@tabler/icons";
 import { Link } from "react-router-dom";
+import { useUserContext } from "../../../context/userContext";
 import useUpdateCurrentUser from "../../../hooks/auth/useUpdateCurrentUser";
 
 const useStyles = createStyles((theme, _params, getRef) => ({
@@ -37,6 +38,10 @@ const useStyles = createStyles((theme, _params, getRef) => ({
 export default function PhoneCard({ imageLinks, brand, model, price, description, condition, _id }) {
   const { classes } = useStyles();
   const { addToWishList, updatingUser } = useUpdateCurrentUser();
+  const { wishlist } = useUserContext();
+  const isWishlist = Array.isArray(wishlist);
+  const matched = isWishlist && wishlist.filter((listedId) => listedId === _id);
+  const wishListed = Array.isArray(matched) && matched.length > 0;
 
   const slides = imageLinks?.map((image) => (
     <Carousel.Slide key={image}>
@@ -94,7 +99,7 @@ export default function PhoneCard({ imageLinks, brand, model, price, description
               onClick={() => addToWishList(_id)}
               radius="md"
               variant="light"
-              color="red"
+              color={wishListed && "red"}
             >
               <IconHeart size={16} />
             </ActionIcon>
