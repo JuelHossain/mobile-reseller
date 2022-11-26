@@ -7,11 +7,17 @@ export default function Page2() {
   console.log(values);
 
   const sellerInputs = Object.keys(seller).map((key) => (
-    <TextInput classNames={{ label: "capitalize" }} key={key} label={key} {...getInputProps(key)} />
+    <TextInput
+      classNames={{ label: "capitalize" }}
+      key={key}
+      label={key}
+      {...getInputProps(`seller.${key}`)}
+      readOnly
+    />
   ));
 
   const productInputs = Object.keys(all).map((key) => (
-    <TextInput classNames={{ label: "capitalize" }} key={key} label={key} {...getInputProps(key)} />
+    <TextInput classNames={{ label: "capitalize" }} key={key} label={key} {...getInputProps(key)} readOnly />
   ));
 
   return (

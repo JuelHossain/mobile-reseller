@@ -1,8 +1,13 @@
+/* eslint-disable no-nested-ternary */
 import { Button, Group } from "@mantine/core";
+import { showNotification } from "@mantine/notifications";
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons";
+import { useBookingFormContext } from "../../../../context/booking-context/bookingFormContext";
 
 export default function Controllers(props) {
-  const { showNext, showPrev, prev, next, showConfirm } = props;
+  const { showNext, showPrev, prev, next, showConfirm, pageIndex } = props;
+  const { submitHandler, errors } = useBookingFormContext();
+  const isErrorInForm = Object.keys(errors).length > 0;
   return (
     <Group position="right" className="p-4">
       {showPrev && (
@@ -11,7 +16,16 @@ export default function Controllers(props) {
         </Button>
       )}
       {showNext && (
-        <Button onClick={next} rightIcon={<IconArrowRight />}>
+        <Button
+          onClick={
+            isErrorInForm && pageIndex > 1
+              ? () => showNotification({ title: "Please Fill the form Please" })
+              : showConfirm
+              ? submitHandler
+              : next
+          }
+          rightIcon={<IconArrowRight />}
+        >
           {showConfirm ? "Confirm booking" : "Next"}
         </Button>
       )}

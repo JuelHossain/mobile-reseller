@@ -13,8 +13,10 @@ export default function useBookingForm(id) {
   const { setValues } = form || {};
 
   const { product, productLoading, productError } = useGetAProduct(id);
-  const { data: seller, userLoading: sellerLoading, userError: sellerError } = useGetAUser(product?.createdBy);
+
+  const { user: seller, userLoading: sellerLoading, userError: sellerError } = useGetAUser(product?.createdBy);
   const { user: buyer, userLoading: buyerLoading, userError: buyerError } = useUserContext();
+  console.log(product?.createdBy);
   const { submitHandler } = useBookingHandler(form);
 
   const loading = productLoading || sellerLoading || buyerLoading;
@@ -37,7 +39,12 @@ export default function useBookingForm(id) {
         price,
         pickupLocation: location,
         seller: { phoneNumber, email: sellerEmail, name: sellerName },
-        buyer: { email: buyerEmail, name: buyerName, phoneNumber: buyerNumber, address: buyerAddress },
+        buyer: {
+          email: buyerEmail,
+          name: buyerName,
+          phoneNumber: buyerNumber,
+          address: buyerAddress || { holding: "", road: "", district: "", postal: "", area: "" },
+        },
         bookedBy: buyerEmail,
         bookedAt: new Date(),
         productId: id,

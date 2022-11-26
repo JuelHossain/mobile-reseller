@@ -8,11 +8,17 @@ export default function Page3() {
   } = values || {};
 
   const buyerInputs = Object.keys(buyer).map((key) => (
-    <TextInput classNames={{ label: "capitalize" }} key={key} label={key} {...getInputProps(key)} />
+    <TextInput
+      classNames={{ label: "capitalize" }}
+      key={key}
+      label={key}
+      {...getInputProps(`buyer.${key}`)}
+      readOnly={key === "email" || key=== "name"}
+    />
   ));
 
   const addressInputs = Object.keys(address).map((key) => (
-    <TextInput classNames={{ label: "capitalize" }} key={key} label={key} {...getInputProps(key)} />
+    <TextInput classNames={{ label: "capitalize" }} key={key} label={key} {...getInputProps(`buyer.address.${key}`)} />
   ));
 
   return (

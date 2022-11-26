@@ -13,6 +13,6 @@ export default function useBookingController() {
   const showPrev = pageIndex > 0 && pageIndex < pages.length - 1;
   const showNext = pageIndex < pages.length - 1 && pageIndex >= 0;
   const showConfirm = pageIndex === pages.length - 2;
-  const controllerProps = { next, prev, showNext, showPrev, showConfirm };
+  const controllerProps = { next, prev, showNext, showPrev, showConfirm, pageIndex };
   return { ActivePage, controllerProps };
 }
