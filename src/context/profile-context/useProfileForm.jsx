@@ -10,8 +10,7 @@ export default function useProfileForm() {
   const { user, email, userLoading } = useUserContext();
   const { upload, uploading } = usePhotoURL();
 
-  const { setValues, errors, reset } = form;
-  console.log(errors);
+  const { setValues, reset } = form;
 
   const onSelect = async (file) => {
     const link = await upload(file[0], email);

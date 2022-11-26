@@ -10,7 +10,7 @@ import ErrorPage from "./pages/errors/ErrorPage";
 import NotFound from "./pages/errors/NotFound";
 import Home from "./pages/home/Home";
 import categories from "./pages/products/components/categories";
-import MobilePhones from "./pages/products/components/MobilePhones";
+import MobilePhones from "./pages/products/mobile-phones/MobilePhones";
 import Products from "./pages/products/Products";
 
 const useRouter = () => {
