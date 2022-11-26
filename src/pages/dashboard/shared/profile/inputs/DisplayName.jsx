@@ -3,5 +3,12 @@ import { useProfileContext } from "../../../../../context/profile-context/profil
 
 export default function DisplayName() {
   const { getInputProps } = useProfileContext();
-  return <TextInput {...getInputProps("displayName")} />;
+  return (
+    <TextInput
+      size="xl"
+      variant="filled"
+      classNames={{ input: "font-bold text-2xl capitalize " }}
+      {...getInputProps("displayName")}
+    />
+  );
 }

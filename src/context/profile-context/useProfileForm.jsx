@@ -13,14 +13,13 @@ export default function useProfileForm() {
   const { setValues } = form;
 
   const onSelect = async (file) => {
-    const link = upload(file, email);
+    const link = await upload(file[0], email);
     setValues({ photoURL: link });
   };
-
   useEffect(() => {
     if (user) {
-      const { _id, ...rest } = user;
-      setValues(rest);
+      const { _id, phoneNumber, ...rest } = user;
+      setValues({ ...rest, phoneNumber: phoneNumber || "" });
     }
   }, [user, setValues]);
 

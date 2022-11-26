@@ -8,7 +8,7 @@ const initialProfile = {
     verified: false,
     seller: false,
     admin: false,
-    address: "",
+    address: { holding: "", road: "", district: "", postal: "", area: "" },
     photoURL: "",
   },
   validate: {
