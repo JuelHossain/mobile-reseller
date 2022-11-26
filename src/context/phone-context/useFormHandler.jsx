@@ -39,7 +39,7 @@ export default function useFormHandler({ onSubmit, reset }, id) {
             break;
         }
 
-        const newPhone = { ...data, createdAt: new Date(), createdBy: email, cat };
+        const newPhone = { ...data, createdAt: new Date(), createdBy: email, cat, status: "on-air" };
 
         addProduct(newPhone, {
           onSuccess: () => {

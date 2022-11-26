@@ -14,6 +14,9 @@ export default function useUpdateAProduct() {
     onSuccess: (res, { id }) => {
       const queryKey = ["get-product", id];
       queryClient.invalidateQueries({ queryKey });
+      queryClient.invalidateQueries({
+        queryKey: ["get-products"],
+      });
       showNotification({ title: "Your Product Updated", message: "Wait some time for buyer response" });
     },
   });

@@ -10,7 +10,7 @@ export default function useProfileForm() {
   const { user, email, userLoading } = useUserContext();
   const { upload, uploading } = usePhotoURL();
 
-  const { setValues, errors } = form;
+  const { setValues, errors, reset } = form;
   console.log(errors);
 
   const onSelect = async (file) => {
@@ -21,8 +21,10 @@ export default function useProfileForm() {
     if (user) {
       const { _id, phoneNumber, ...rest } = user;
       setValues({ ...rest, phoneNumber: phoneNumber || "" });
+    } else {
+      reset();
     }
-  }, [user, setValues]);
+  }, [user, setValues, reset]);
 
   const { submitHandler, loading, serverError } = useProfileHandler(form);
   return { ...form, submitHandler, loading, serverError, onSelect, uploading, userLoading };

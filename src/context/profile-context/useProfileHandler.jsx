@@ -2,10 +2,12 @@ import { showNotification } from "@mantine/notifications";
 import { useUpdateProfile } from "react-firebase-hooks/auth";
 import auth from "../../firebase";
 import useUpdateUser from "../../hooks/auth/useUpdateUser";
+import { useUserContext } from "../userContext";
 
 export default function useProfileHandler({ onSubmit }) {
   const { updateUserAsync, updatingUser, updatingUserError } = useUpdateUser();
   const [updateProfile, updatingProfile, updatingProfileError] = useUpdateProfile(auth);
+  const { email } = useUserContext();
 
   const loading = updatingUser || updatingProfile;
   const serverError = updatingUserError || updatingProfileError;
@@ -18,13 +20,16 @@ export default function useProfileHandler({ onSubmit }) {
       photoURL,
     });
 
-    await updateUserAsync(userData, {
-      onSuccess: () => {
-        showNotification({
-          title: "Your Profile Updated Successfully",
-        });
+    await updateUserAsync(
+      { patch: userData, email },
+      {
+        onSuccess: () => {
+          showNotification({
+            title: "Your Profile Updated Successfully",
+          });
+        },
       },
-    });
+    );
   };
 
   const submitHandler = (e) => {

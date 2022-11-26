@@ -1,7 +1,5 @@
-export default function AllProducts (){
-  return (
-    <div>
-      this is AllProducts
-    </div>
-  )
-};
+import ProductsTable from "../shared/ProductsTable";
+
+export default function AllProducts() {
+  return <ProductsTable />;
+}

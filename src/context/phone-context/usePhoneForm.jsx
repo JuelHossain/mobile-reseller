@@ -40,5 +40,5 @@ export default function usePhoneForm(id) {
 
   const { submitHandler, loading, serverError } = useFormHandler(form, id);
 
-  return { ...form, submitHandler, loading, serverError, onDrop, uploading };
+  return { ...form, submitHandler, loading, serverError, onDrop, uploading, id };
 }

@@ -7,6 +7,7 @@ export default function SubmitButton() {
   if (loading) buttonText = "updating User";
   if (uploading) buttonText = "uploading Profile Picture";
   if (userLoading) buttonText = "Please Wait Loading User Data";
+
   return (
     <Group position="right" className="w-full">
       <Button type="submit" loading={loading || uploading || userLoading}>

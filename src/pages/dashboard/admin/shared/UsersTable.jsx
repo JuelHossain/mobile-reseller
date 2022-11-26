@@ -25,7 +25,7 @@ export default function UsersTable({ options }) {
             radius="xs"
             checked={verified}
             onChange={(value) => {
-              updateUser({ verified: value, email });
+              updateUser({ patch: { verified: value }, email });
             }}
             readOnly={verified}
           >
