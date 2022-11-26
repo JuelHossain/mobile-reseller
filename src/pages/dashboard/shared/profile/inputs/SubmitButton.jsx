@@ -10,7 +10,7 @@ export default function SubmitButton() {
 
   return (
     <Group position="right" className="w-full">
-      <Button type="submit" loading={loading || uploading || userLoading}>
+      <Button className="w-full xs:w-auto" type="submit" loading={loading || uploading || userLoading}>
         {buttonText}
       </Button>
     </Group>
