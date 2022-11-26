@@ -1,6 +1,7 @@
 import { Carousel } from "@mantine/carousel";
 import { Button, Card, createStyles, Flex, Group, Image, Text } from "@mantine/core";
 import { IconStar } from "@tabler/icons";
+import { Link } from "react-router-dom";
 
 const useStyles = createStyles((theme, _params, getRef) => ({
   price: {
@@ -32,7 +33,7 @@ const useStyles = createStyles((theme, _params, getRef) => ({
   },
 }));
 
-export default function PhoneCard({ imageLinks, brand, model, price, description, condition }) {
+export default function PhoneCard({ imageLinks, brand, model, price, description, condition, _id }) {
   const { classes } = useStyles();
 
   const slides = imageLinks?.map((image) => (
@@ -85,7 +86,9 @@ export default function PhoneCard({ imageLinks, brand, model, price, description
             </Text>
           </div>
 
-          <Button radius="md">Book now</Button>
+          <Button component={Link} to={`/products/booking/${_id}`} radius="md">
+            Book now
+          </Button>
         </Group>
       </Flex>
     </Card>
