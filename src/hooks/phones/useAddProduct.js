@@ -11,7 +11,7 @@ export default function useAddProduct() {
       return response;
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["get-product"] });
+      queryClient.invalidateQueries({ queryKey: ["get-products"] });
       showNotification({
         title: "Product Added Successfully",
         message: "time to get some money , yeh!",
