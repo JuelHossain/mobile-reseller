@@ -1,7 +1,8 @@
 import { Button, Group } from "@mantine/core";
 import { IconArrowLeft, IconArrowRight } from "@tabler/icons";
 
-export default function Controllers({ showNext, showPrev, prev, next, showConfirm }) {
+export default function Controllers(props) {
+  const { showNext, showPrev, prev, next, showConfirm } = props;
   return (
     <Group position="right" className="p-4">
       {showPrev && (

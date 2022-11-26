@@ -9,10 +9,10 @@ const initialBookingForm = {
     pickupLocation: "",
     seller: { phoneNumber: "", email: "", name: "" },
     buyer: {
-      address: { holding: "", road: "", district: "", postal: "", area: "" },
       phoneNumber: "",
       email: "",
       name: "",
+      address: { holding: "", road: "", district: "", postal: "", area: "" },
     },
   },
   validate: {

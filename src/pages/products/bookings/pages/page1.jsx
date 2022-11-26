@@ -18,7 +18,7 @@ export default function Page1(props) {
 
   return (
     <div>
-      <Title className="text-center mb-4">{`${brand} ${model}`}</Title>
+      <Title order={2} className="text-center mb-4">{`${brand} ${model}`}</Title>
       <Stack className="gap-2 rounded-xl">
         <img src={imageLinks[imgIndex]} alt="phone" className="max-h-[50vh] object-contain rounded-md" />
         <ScrollArea>
