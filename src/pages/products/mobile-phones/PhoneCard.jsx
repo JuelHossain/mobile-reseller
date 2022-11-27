@@ -90,7 +90,7 @@ export default function PhoneCard({ product }) {
         <Text size="sm" color="dimmed" mt="sm">
           {description}
         </Text>
-        <Group position="apart" mt="md" noWrap>
+        <Group position="apart" mt="md">
           <div className="line-clamp-1">
             <Text size="xl" span weight={500} className={classes.price}>
               {price}

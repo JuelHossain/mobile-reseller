@@ -1,6 +1,7 @@
 /* eslint-disable no-await-in-loop */
 
 import { openConfirmModal } from "@mantine/modals";
+import { showNotification } from "@mantine/notifications";
 import { useNavigate } from "react-router-dom";
 import useUpdateUser from "../../hooks/auth/useUpdateUser";
 import useAddOrder from "../../hooks/orders/useAddOrder";
@@ -58,9 +59,13 @@ export default function useBookingHandler({ onSubmit }, id, product) {
       } else {
         await addOrderAsync(finalData, {
           onSuccess: () => {
-            navigate("/booking/success");
+            showNotification({
+              title: "Your Booking Is Complete",
+              message: "We are letting the seller know that you are interested in his phone",
+            });
           },
         });
+        navigate("/dashboard/my-orders");
       }
     };
     onSubmit(handler)(e);
