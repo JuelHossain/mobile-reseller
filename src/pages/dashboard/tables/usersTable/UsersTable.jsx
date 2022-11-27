@@ -7,9 +7,10 @@ import useUserActions from "./useUserActions";
 import useUserRows from "./useUserRows";
 
 export default function UsersTable({ options }) {
-  const { users, usersError, usersLoading } = useGetUsers(options);
+  const { users, usersError, usersLoading } = useGetUsers(options); 
+  console.log(users);
 
-  const rows = useUserRows();
+  const rows = useUserRows(users);
   const actions = useUserActions();
   const headers = ["title", "role", "Status", "email", "Actions"];
 

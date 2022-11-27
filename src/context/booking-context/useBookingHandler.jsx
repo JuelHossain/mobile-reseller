@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import useUpdateUser from "../../hooks/auth/useUpdateUser";
 import useAddOrder from "../../hooks/orders/useAddOrder";
 import useGetOrders from "../../hooks/orders/useGetOrders";
+import useUpdateAProduct from "../../hooks/phones/useUpdateAProduct";
 import { useUserContext } from "../userContext";
 
 export default function useBookingHandler({ onSubmit }, id, product) {
@@ -13,6 +14,7 @@ export default function useBookingHandler({ onSubmit }, id, product) {
   const { email: userEmail, admin, seller } = useUserContext();
   const { updateUserAsync, updatingUser, updatingUserError } = useUpdateUser();
   const { addOrderAsync, addingOrder, addingOrderError } = useAddOrder();
+  const { updateProductAsync, updatingProduct, updateError } = useUpdateAProduct(id);
   const { orders, ordersLoading } = useGetOrders({ email: userEmail, productId: id });
 
   const alreadyBooked = orders?.length > 0;
@@ -65,14 +67,15 @@ export default function useBookingHandler({ onSubmit }, id, product) {
             });
           },
         });
+        await updateProductAsync({ patch: { status: "booked" }, id });
         navigate("/dashboard/my-orders");
       }
     };
     onSubmit(handler)(e);
   };
 
-  const submitting = updatingUser || addingOrder || ordersLoading;
-  const submitError = updatingUserError || addingOrderError;
+  const submitting = updatingUser || addingOrder || ordersLoading || updatingProduct;
+  const submitError = updatingUserError || addingOrderError || updateError;
 
-  return { submitHandler, submitError, submitting,alreadyBooked };
+  return { submitHandler, submitError, submitting, alreadyBooked };
 }

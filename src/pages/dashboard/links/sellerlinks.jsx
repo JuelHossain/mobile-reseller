@@ -1,4 +1,4 @@
-import { IconBrandProducthunt, IconBuildingSkyscraper, IconSelect } from "@tabler/icons";
+import { IconAd, IconBuildingSkyscraper, IconSelect } from "@tabler/icons";
 
 import AddPhone from "../seller/AddPhone";
 import ManageAds from "../seller/ManageAds";
@@ -23,7 +23,7 @@ const sellerLinks = [
     label: "Manage Ads",
     link: "/dashboard/manage-ads",
     description: "Manage your ads",
-    icon: IconBrandProducthunt,
+    icon: IconAd,
     element: <ManageAds />,
   },
 ];
