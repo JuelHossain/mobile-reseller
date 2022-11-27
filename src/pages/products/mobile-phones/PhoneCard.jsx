@@ -1,6 +1,7 @@
 import { Carousel } from "@mantine/carousel";
-import { ActionIcon, Button, Card, createStyles, Flex, Group, Image, Text } from "@mantine/core";
+import { ActionIcon, Badge, Button, Card, createStyles, Group, Image, Stack, Text } from "@mantine/core";
 import { IconCheck, IconHeart, IconStar } from "@tabler/icons";
+import moment from "moment/moment";
 import { useNavigate } from "react-router-dom";
 import { useUserContext } from "../../../context/userContext";
 import useUpdateCurrentUser from "../../../hooks/auth/useUpdateCurrentUser";
@@ -37,7 +38,7 @@ const useStyles = createStyles((theme, _params, getRef) => ({
 }));
 
 export default function PhoneCard({ product }) {
-  const { imageLinks, brand, model, price, description, condition, _id, createdBy } = product;
+  const { imageLinks, brand, model, price, description, condition, _id, createdBy, createdAt } = product;
   const { email, userLoading } = useUserContext();
   const { orders, ordersLoading } = useGetOrders({ email, productId: _id });
   const alreadyBooked = orders?.length > 0;
@@ -57,7 +58,7 @@ export default function PhoneCard({ product }) {
   ));
 
   return (
-    <Card radius="md" withBorder p="xl">
+    <Card radius="md" withBorder p="xl" className="flex-col flex justify-between">
       <Card.Section>
         <Carousel
           withIndicators
@@ -70,27 +71,34 @@ export default function PhoneCard({ product }) {
         >
           {slides}
         </Carousel>
+        <Badge size="xs" className="text-xs mt-1 m-0 absolute top-0 right-0">
+          {moment(createdAt).startOf("hour").fromNow()}
+        </Badge>
+
+        <Stack className="px-4 gap-0">
+          <Group className="items-start w-full justify-between " mt="lg">
+            <Group className="w-3/5">
+              <Text weight={500} size="lg" className="line-clamp-2">
+                {`${brand} ${model}`}
+              </Text>
+            </Group>
+
+            <div>
+              <Group spacing={5} className="2/5">
+                <IconStar size={16} />
+                <Text size="xs" weight={500} className="capitalize">
+                  {condition}
+                </Text>
+              </Group>
+            </div>
+          </Group>
+          <Text size="sm" color="dimmed" mt="sm" className="line-clamp-3">
+            {description}
+          </Text>
+        </Stack>
       </Card.Section>
-
-      <Flex direction="column" justify="space-between">
-        <Group align="start" position="apart" mt="lg">
-          <Group className="w-3/5">
-            <Text weight={500} size="lg" className="line-clamp-2">
-              {`${brand} ${model}`}
-            </Text>
-          </Group>
-
-          <Group spacing={5} className="2/5">
-            <IconStar size={16} />
-            <Text size="xs" weight={500} className="capitalize">
-              {condition}
-            </Text>
-          </Group>
-        </Group>
-        <Text size="sm" color="dimmed" mt="sm">
-          {description}
-        </Text>
-        <Group position="apart" mt="md">
+      <Card.Section className="px-4 pb-4 mt-3">
+        <Group position="apart">
           <div className="line-clamp-1">
             <Text size="xl" span weight={500} className={classes.price}>
               {price}
@@ -121,7 +129,7 @@ export default function PhoneCard({ product }) {
             </Button>
           </Group>
         </Group>
-      </Flex>
+      </Card.Section>
     </Card>
   );
 }

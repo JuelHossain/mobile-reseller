@@ -1,6 +1,7 @@
 import { LoadingOverlay } from "@mantine/core";
 import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
+import PrivateRoute from "./components/auth/PrivateRoute";
 import Blog from "./components/blog/Blog";
 import { useUserContext } from "./context/userContext";
 import Dashboard from "./pages/dashboard/Dashboard";
@@ -10,7 +11,6 @@ import ErrorPage from "./pages/errors/ErrorPage";
 import NotFound from "./pages/errors/NotFound";
 import Home from "./pages/home/Home";
 import BookingPage from "./pages/products/bookings/BookingPage";
-import SuccessPage from "./pages/products/bookings/pages/SuccessPage";
 import categories from "./pages/products/components/categories";
 import MobilePhones from "./pages/products/mobile-phones/MobilePhones";
 import Payments from "./pages/products/payments/Payments";
@@ -45,15 +45,18 @@ const useRouter = () => {
           element: <Products />,
           children: mobilePhones,
         },
-
-        { path: "products/booking/:id", element: <BookingPage /> },
-        { path: "booking/success", element: <SuccessPage /> },
-        { path: "payment/:id", element: <Payments /> },
-        { path: "payment-success", element: <PaymentSuccess /> },
         {
-          path: "dashboard",
-          element: <Dashboard />,
-          children: dashboardRoutes,
+          element: <PrivateRoute />,
+          children: [
+            {
+              path: "dashboard",
+              element: <Dashboard />,
+              children: dashboardRoutes,
+            },
+            { path: "products/booking/:id", element: <BookingPage /> },
+            { path: "payment/:id", element: <Payments /> },
+            { path: "payment-success", element: <PaymentSuccess /> },
+          ],
         },
         {
           path: "blog",

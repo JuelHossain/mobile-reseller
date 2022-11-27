@@ -3,5 +3,5 @@ import ProductsTable from "../tables/productsTable/ProductsTable";
 
 export default function MyPhones() {
   const { email } = useUserContext();
-  return <ProductsTable options={{ email }} />;
+  return <ProductsTable options={{ createdBy: email }} />;
 }

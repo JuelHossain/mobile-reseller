@@ -3,7 +3,7 @@ import useGetProducts from "../../../hooks/phones/useGetProducts";
 import PhoneCard from "../../products/mobile-phones/PhoneCard";
 
 export default function ProductAd() {
-  const { products } = useGetProducts({ cat: "budget" });
+  const { products } = useGetProducts({ ad: true });
 
   const stats = products?.map((item) => <PhoneCard product={item} key={item._id} />);
   return (

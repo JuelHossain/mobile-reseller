@@ -31,11 +31,11 @@ export default function TableBody({ rows, selection, setSelection, actions }) {
           <Checkbox checked={selection.includes(id)} onChange={() => toggleRow(id)} transitionDuration={0} />
         </td>
         <td>
-          <Group spacing="sm">
+          <Group spacing="sm" noWrap>
             <Avatar size={26} src={image} radius={26}>
               {typeof image !== "string" && image}
             </Avatar>
-            <Text size="sm" weight={500}>
+            <Text className="line-clamp-1" size="sm" weight={500}>
               {title}
             </Text>
           </Group>

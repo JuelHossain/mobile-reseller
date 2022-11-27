@@ -4,10 +4,10 @@ import useUpdateAProduct from "../../../hooks/phones/useUpdateAProduct";
 
 export default function ChangeStatus({ status, id, ...props }) {
   const { updateProduct } = useUpdateAProduct();
-  const { admin, seller } = useUserContext();
+  const { admin } = useUserContext();
   return (
     <Select
-      readOnly={!admin && !seller}
+      readOnly={!admin}
       {...props}
       onChange={(value) => {
         updateProduct({ patch: { status: value }, id });

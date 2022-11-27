@@ -5,6 +5,11 @@ const { getTailColors } = require("@juel/hooks/tailwind");
 
 const colors = { main: "", sec: "", neu: "" };
 const tailColors = getTailColors(colors);
+const banner = [
+  "https://images.pexels.com/photos/957040/night-photograph-starry-sky-night-sky-star-957040.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+];
+
+const x = Math.floor(Math.random() * banner.length);
 
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
@@ -22,8 +27,7 @@ module.exports = {
     extend: {
       colors: tailColors,
       backgroundImage: {
-        banner:
-          "url('https://cdn.dribbble.com/users/2103205/screenshots/14694072/media/aeb45d37e8031342f0feb16ce51dcc22.jpg?compress=1&resize=1000x750&vertical=top')",
+        banner: `url('${banner[x]}')`,
         ad: "url('https://static.vecteezy.com/system/resources/thumbnails/003/663/127/original/purple-light-particle-line-fall-background-loop-animation-free-video.jpg')",
       },
     },
