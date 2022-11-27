@@ -7,8 +7,7 @@ import useUserActions from "./useUserActions";
 import useUserRows from "./useUserRows";
 
 export default function UsersTable({ options }) {
-  const { users, usersError, usersLoading } = useGetUsers(options); 
-  console.log(users);
+  const { users, usersError, usersLoading } = useGetUsers(options);
 
   const rows = useUserRows(users);
   const actions = useUserActions();

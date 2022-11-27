@@ -6,7 +6,7 @@ import { useBookingFormContext } from "../../../../context/booking-context/booki
 
 export default function Controllers(props) {
   const { showNext, showPrev, prev, next, showConfirm, pageIndex } = props;
-  const { submitHandler, errors, loading, alreadyBooked } = useBookingFormContext();
+  const { submitHandler, errors, loading } = useBookingFormContext();
   const isErrorInForm = Object.keys(errors).length > 0;
 
   return (
