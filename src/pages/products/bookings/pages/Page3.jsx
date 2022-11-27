@@ -1,7 +1,7 @@
 import { Box, Card, Paper, SimpleGrid, TextInput, Title } from "@mantine/core";
 import { useBookingFormContext } from "../../../../context/booking-context/bookingFormContext";
 
-export default function Page3() {
+export default function Page3({ hideAddress }) {
   const { getInputProps, values } = useBookingFormContext();
   const {
     buyer: { address, ...buyer },
@@ -13,7 +13,7 @@ export default function Page3() {
       key={key}
       label={key}
       {...getInputProps(`buyer.${key}`)}
-      readOnly={key === "email" || key=== "name"}
+      readOnly={key === "email" || key === "name"}
     />
   ));
 
@@ -29,10 +29,12 @@ export default function Page3() {
           <Title order={4}>Your Details</Title>
           <SimpleGrid cols={2}>{buyerInputs}</SimpleGrid>
         </Card>
-        <Card>
-          <Title order={4}>Your Address</Title>
-          <SimpleGrid cols={2}>{addressInputs}</SimpleGrid>
-        </Card>
+        {!hideAddress && (
+          <Card>
+            <Title order={4}>Your Address</Title>
+            <SimpleGrid cols={2}>{addressInputs}</SimpleGrid>
+          </Card>
+        )}
       </Box>
     </Paper>
   );

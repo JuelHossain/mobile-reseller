@@ -1,5 +1,4 @@
 /* eslint-disable no-underscore-dangle */
-import { showNotification } from "@mantine/notifications";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 
@@ -17,7 +16,6 @@ export default function useUpdateAOrder() {
       queryClient.invalidateQueries({
         queryKey: ["get-orders"],
       });
-      showNotification({ title: "Your Product Updated", message: "Wait some time for buyer response" });
     },
   });
 

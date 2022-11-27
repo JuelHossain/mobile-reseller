@@ -1,15 +1,6 @@
 import { Card, Container, createStyles, SimpleGrid, Stack, Text, Title, UnstyledButton } from "@mantine/core";
-import { IconBuildingBank, IconCreditCard, IconReceiptRefund, IconRepeat } from "@tabler/icons";
 import { Link } from "react-router-dom";
 import categories from "../../products/components/categories";
-
-const mockdata = [
-  { title: "Credit cards", icon: IconCreditCard, color: "violet" },
-  { title: "Banks nearby", icon: IconBuildingBank, color: "indigo" },
-  { title: "Transfers", icon: IconRepeat, color: "blue" },
-  { title: "Refunds", icon: IconReceiptRefund, color: "green" },
-  ,
-];
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -45,7 +36,9 @@ export default function ProductCategories() {
   const items = categories.map((item) => (
     <UnstyledButton component={Link} to={item.link} key={item.label} className={classes.item}>
       <item.icon color={theme.fn.primaryColor()} size={32} />
-      <Text className="text-xs xs:text-xl" mt={7}>{item.label}</Text>
+      <Text className="text-xs xs:text-xl" mt={7}>
+        {item.label}
+      </Text>
     </UnstyledButton>
   ));
 

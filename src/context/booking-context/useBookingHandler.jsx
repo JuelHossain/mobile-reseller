@@ -74,5 +74,5 @@ export default function useBookingHandler({ onSubmit }, id, product) {
   const submitting = updatingUser || addingOrder || ordersLoading;
   const submitError = updatingUserError || addingOrderError;
 
-  return { submitHandler, submitError, submitting };
+  return { submitHandler, submitError, submitting,alreadyBooked };
 }

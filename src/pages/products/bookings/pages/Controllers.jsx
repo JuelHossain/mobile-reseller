@@ -6,8 +6,9 @@ import { useBookingFormContext } from "../../../../context/booking-context/booki
 
 export default function Controllers(props) {
   const { showNext, showPrev, prev, next, showConfirm, pageIndex } = props;
-  const { submitHandler, errors,loading } = useBookingFormContext();
+  const { submitHandler, errors, loading, alreadyBooked } = useBookingFormContext();
   const isErrorInForm = Object.keys(errors).length > 0;
+
   return (
     <Group position="right" className="p-4">
       {showPrev && (
