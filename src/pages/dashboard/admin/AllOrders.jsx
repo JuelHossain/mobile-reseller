@@ -1,4 +1,4 @@
-import OrdersTable from "../shared/OrdersTable";
+import OrdersTable from "../tables/ordersTable/OrdersTable";
 
 export default function AllOrders() {
   return <OrdersTable />;

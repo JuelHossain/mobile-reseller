@@ -1,5 +1,6 @@
 import { Avatar, createStyles, Group, Text, UnstyledButton } from "@mantine/core";
 import { IconChevronRight } from "@tabler/icons";
+import { useNavigate } from "react-router-dom";
 import { useUserContext } from "../../../context/userContext";
 
 const useStyles = createStyles((theme) => ({
@@ -19,9 +20,10 @@ export default function UserPreview() {
   const { classes } = useStyles();
   const { user } = useUserContext();
   const { photoURL, displayName, email } = user ?? {};
+  const navigate = useNavigate();
 
   return (
-    <UnstyledButton className={classes.user}>
+    <UnstyledButton onClick={() => navigate("/dashboard")} className={classes.user}>
       <Group>
         <Avatar src={photoURL} radius="xl" />
 

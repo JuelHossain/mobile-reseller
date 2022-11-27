@@ -16,7 +16,7 @@ export default function useBookingForm(id) {
 
   const { user: seller, userLoading: sellerLoading, userError: sellerError } = useGetAUser(product?.createdBy);
   const { user: buyer, userLoading: buyerLoading, userError: buyerError } = useUserContext();
-  const { submitHandler, submitting, submitError } = useBookingHandler(form, id);
+  const { submitHandler, submitting, submitError } = useBookingHandler(form, id, product);
 
   const loading = productLoading || sellerLoading || buyerLoading || submitting;
   const serverError = productError || sellerError || buyerError || submitError;

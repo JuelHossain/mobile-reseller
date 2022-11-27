@@ -1,5 +1,5 @@
 import { useUserContext } from "../../../context/userContext";
-import ProductsTable from "../shared/ProductsTable";
+import ProductsTable from "../tables/productsTable/ProductsTable";
 
 export default function MyPhones() {
   const { email } = useUserContext();

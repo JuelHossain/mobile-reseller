@@ -1,9 +1,10 @@
 import { Carousel } from "@mantine/carousel";
 import { ActionIcon, Button, Card, createStyles, Flex, Group, Image, Text } from "@mantine/core";
-import { IconHeart, IconStar } from "@tabler/icons";
-import { Link } from "react-router-dom";
+import { IconCheck, IconHeart, IconStar } from "@tabler/icons";
+import { useNavigate } from "react-router-dom";
 import { useUserContext } from "../../../context/userContext";
 import useUpdateCurrentUser from "../../../hooks/auth/useUpdateCurrentUser";
+import useGetOrders from "../../../hooks/orders/useGetOrders";
 
 const useStyles = createStyles((theme, _params, getRef) => ({
   price: {
@@ -36,12 +37,18 @@ const useStyles = createStyles((theme, _params, getRef) => ({
 }));
 
 export default function PhoneCard({ product }) {
-  const { imageLinks, brand, model, price, description, condition, _id } = product;
+  const { imageLinks, brand, model, price, description, condition, _id, createdBy } = product;
+  const { email, userLoading } = useUserContext();
+  const { orders, ordersLoading } = useGetOrders({ email, productId: _id });
+  const alreadyBooked = orders?.length > 0;
+  const navigate = useNavigate();
+
   const { classes } = useStyles();
   const { addToWishList, updatingUser } = useUpdateCurrentUser();
   const { wishlist } = useUserContext();
   const matched = wishlist?.filter((p) => p?._id === _id);
   const wishListed = matched?.length > 0;
+  const myPhone = email === createdBy;
 
   const slides = imageLinks?.map((image) => (
     <Carousel.Slide key={image}>
@@ -103,8 +110,14 @@ export default function PhoneCard({ product }) {
             >
               <IconHeart size={16} />
             </ActionIcon>
-            <Button size="xs" component={Link} to={`/products/booking/${_id}`} radius="md">
-              Book now
+            <Button
+              loading={ordersLoading || userLoading}
+              rightIcon={alreadyBooked && <IconCheck size={18} />}
+              size="xs"
+              onClick={() => alreadyBooked || myPhone || navigate(`/products/booking/${_id}`)}
+              radius="md"
+            >
+              {alreadyBooked ? "Booked" : myPhone ? "Your Phone" : "Book Now"}
             </Button>
           </Group>
         </Group>

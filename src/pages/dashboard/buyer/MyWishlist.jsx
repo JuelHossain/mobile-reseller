@@ -5,8 +5,9 @@ import { openConfirmModal } from "@mantine/modals";
 import { IconHeart, IconTrash, IconX } from "@tabler/icons";
 import { useUserContext } from "../../../context/userContext";
 import useUpdateCurrentUser from "../../../hooks/auth/useUpdateCurrentUser";
+
 import ChangeStatus from "../shared/ChangeStatus";
-import DataTable from "../shared/table/DataTable";
+import DataTable from "../tables/dataTable/DataTable";
 
 export default function MyWishList() {
   const { wishlist, userLoading, userError } = useUserContext();

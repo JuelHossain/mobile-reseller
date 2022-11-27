@@ -7,7 +7,7 @@ export default function ChangeStatus({ status, id, ...props }) {
   const { admin, seller } = useUserContext();
   return (
     <Select
-      readOnly={!admin || !seller}
+      readOnly={!admin && !seller}
       {...props}
       onChange={(value) => {
         updateProduct({ patch: { status: value }, id });
