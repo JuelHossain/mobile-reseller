@@ -58,6 +58,7 @@ const useRouter = () => {
             { path: "payment/:id", element: <Payments /> },
             { path: "payment-success", element: <PaymentSuccess /> },
             { path: "ad/:id", element: <AdPage /> },
+            { path: "ad", element: <AdPage /> },
           ],
         },
         {

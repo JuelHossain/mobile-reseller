@@ -1,4 +1,4 @@
-import { createStyles, Paper, SimpleGrid, Text, Title } from "@mantine/core";
+import { Card, Container, createStyles, SimpleGrid, Text, Title } from "@mantine/core";
 import { IconCertificate, IconCoin, IconTruck } from "@tabler/icons";
 
 const useStyles = createStyles((theme) => ({
@@ -41,10 +41,10 @@ function Feature({ icon: Icon, title, description, className, ...others }) {
 
       <div className={classes.content}>
         <Icon size={38} className={classes.icon} stroke={1.5} />
-        <Text weight={700} size="lg" mb="xs" mt={5} className={classes.title}>
+        <Text color="white" weight={700} size="lg" mb="xs" mt={5} className={classes.title}>
           {title}
         </Text>
-        <Text color="dimmed" size="sm">
+        <Text color="white" size="sm">
           {description}
         </Text>
       </div>
@@ -76,13 +76,19 @@ export default function Services() {
   const items = mockdata.map((item) => <Feature {...item} key={item.title} />);
 
   return (
-    <Paper className="p-6 sm:px-20 flex flex-col justify-center border-solid border-main-5 rounded-md py-20 shadow-md">
-      <Title mb={50} align="center">
-        Services We also provide
-      </Title>
-      <SimpleGrid cols={3} breakpoints={[{ maxWidth: "sm", cols: 1 }]} spacing={50}>
-        {items}
-      </SimpleGrid>
-    </Paper>
+    <Card
+      withBorder
+      shadow="md"
+      className="p-6 sm:px-20 flex flex-col justify-center rounded-md py-20 shadow-md bg-service bg-bottom bg-no-repeat bg-cover "
+    >
+      <Container size="xl" className="bg-main-5/50 dark:bg-main-9/50 p-6 rounded-md">
+        <Title color="white" mb={50} align="center">
+          Services We also provide
+        </Title>
+        <SimpleGrid cols={3} breakpoints={[{ maxWidth: "sm", cols: 1 }]} spacing={50}>
+          {items}
+        </SimpleGrid>
+      </Container>
+    </Card>
   );
 }

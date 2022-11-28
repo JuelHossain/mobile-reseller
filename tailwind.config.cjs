@@ -29,6 +29,9 @@ module.exports = {
       backgroundImage: {
         banner: `url('${banner[x]}')`,
         ad: "url('https://static.vecteezy.com/system/resources/thumbnails/003/663/127/original/purple-light-particle-line-fall-background-loop-animation-free-video.jpg')",
+        service:
+          "url('https://c4.wallpaperflare.com/wallpaper/378/293/186/artistic-neon-purple-hd-wallpaper-preview.jpg')",
+        featured: "url('https://wallpapercave.com/wp/wp3474950.jpg')",
       },
     },
   },
