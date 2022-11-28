@@ -43,7 +43,7 @@ export default function ProductCategories() {
   ));
 
   return (
-    <Card withBorder radius="md" className="bg-banner h-full flex bg-no-repeat bg-cover bg-bottom ">
+    <Card withBorder shadow="md" radius="md" className="bg-banner h-full flex bg-no-repeat bg-cover bg-bottom ">
       <Container className="flex-1 flex flex-col items-center justify-center sm:-mt-20 ">
         <div className="bg-main-2/50 dark:bg-neu-8/50 rounded-md p-5 sm:p-10">
           <Stack>

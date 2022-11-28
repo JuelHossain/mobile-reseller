@@ -8,7 +8,7 @@ export default function ProductAd() {
   const stats = products?.map((item) => <PhoneCard product={item} key={item._id} />);
   return (
     products?.length > 0 && (
-      <Box id="ad" className="p-4 xs:p-10  bg-no-repeat bg-cover bg-main-6 dark:bg-main-9 rounded-xl bg-featured ">
+      <Box id="ad" className="p-4 xs:p-10  bg-no-repeat bg-cover rounded-xl bg-featured shadow-md ">
         <Container size="xl" className="bg-main-5/50 p-6 rounded-md">
           <Stack className="mb-5">
             <Title color="white" className="" order={2}>

@@ -5,12 +5,17 @@ const { getTailColors } = require("@juel/hooks/tailwind");
 
 const colors = { main: "", sec: "", neu: "" };
 const tailColors = getTailColors(colors);
-const banner = [
+const bannerImages = [
   "https://images.pexels.com/photos/957040/night-photograph-starry-sky-night-sky-star-957040.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
 ];
 
-const x = Math.floor(Math.random() * banner.length);
-
+const x = Math.floor(Math.random() * bannerImages.length);
+const banner = `url('${bannerImages[x]}')`;
+const ad =
+  "url('https://static.vecteezy.com/system/resources/thumbnails/003/663/127/original/purple-light-particle-line-fall-background-loop-animation-free-video.jpg')";
+const service =
+  "url('https://c4.wallpaperflare.com/wallpaper/378/293/186/artistic-neon-purple-hd-wallpaper-preview.jpg')";
+const featured = "url('https://wallpapercave.com/wp/wp3474950.jpg')";
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   darkMode: "class",
@@ -27,11 +32,10 @@ module.exports = {
     extend: {
       colors: tailColors,
       backgroundImage: {
-        banner: `url('${banner[x]}')`,
-        ad: "url('https://static.vecteezy.com/system/resources/thumbnails/003/663/127/original/purple-light-particle-line-fall-background-loop-animation-free-video.jpg')",
-        service:
-          "url('https://c4.wallpaperflare.com/wallpaper/378/293/186/artistic-neon-purple-hd-wallpaper-preview.jpg')",
-        featured: "url('https://wallpapercave.com/wp/wp3474950.jpg')",
+        banner,
+        ad,
+        service,
+        featured,
       },
     },
   },
