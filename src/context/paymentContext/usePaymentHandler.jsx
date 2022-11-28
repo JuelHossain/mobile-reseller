@@ -15,20 +15,25 @@ export default function usePaymentHandler({ onSubmit }, id, productId, ad) {
   const submitHandler = (e) => {
     const handler = async () => {
       if (id) await updateOrderAsync({ patch: { paid: true }, id });
-      const patch = { status: "sold", soldTo: email };
-      await updateProductAsync(
-        { patch: ad || patch, id: productId },
-        {
-          onSuccess: () => {
-            if (ad) {
-              showNotification({ title: "Your Ad Has been added Successfully" });
-              navigate("/");
-            } else {
-              navigate("/payment-success");
-            }
+      if (productId) {
+        const patch = { status: "sold", soldTo: email };
+
+        await updateProductAsync(
+          { patch: ad || patch, id: productId },
+          {
+            onSuccess: () => {
+              if (ad) {
+                showNotification({ title: "Your Ad Has been added Successfully" });
+                navigate("/");
+              } else {
+                navigate("/payment-success");
+              }
+            },
           },
-        },
-      );
+        );
+      } else {
+        showNotification({ title: "Please Select A Product First" });
+      }
     };
     onSubmit(handler)(e);
   };

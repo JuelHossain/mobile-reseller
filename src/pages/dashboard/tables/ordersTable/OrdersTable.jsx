@@ -1,6 +1,7 @@
-import { LoadingOverlay, Notification } from "@mantine/core";
-import { IconX } from "@tabler/icons";
+import { LoadingOverlay } from "@mantine/core";
 import useGetOrders from "../../../../hooks/orders/useGetOrders";
+import NotFound from "../../shared/NotFound";
+import ServerError from "../../shared/ServerError";
 
 import DataTable from "../dataTable/DataTable";
 import useOrderActions from "./useOrderActions";
@@ -15,17 +16,7 @@ export default function OrdersTable({ options }) {
   const data = { rows, headers, actions };
 
   if (ordersLoading) return <LoadingOverlay visible />;
-  if (ordersError)
-    return (
-      <Notification title="Server Side Error" icon={<IconX size={18} />} color="red">
-        Please Try again later.
-      </Notification>
-    );
-  if (orders?.length === 0)
-    return (
-      <Notification closeButtonProps={{ color: "red", variant: "light" }} title="Please Book A Phone">
-        You have not done Any order
-      </Notification>
-    );
+  if (ordersError) return <ServerError />;
+  if (orders?.length === 0) return <NotFound title="No Orders Found" children="Please do order a phone" />;
   return <DataTable data={data} />;
 }

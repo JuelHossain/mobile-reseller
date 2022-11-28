@@ -8,7 +8,7 @@ export default function ProductAd() {
   const stats = products?.map((item) => <PhoneCard product={item} key={item._id} />);
   return (
     products?.length > 0 && (
-      <Box className="p-4 xs:p-10  bg-no-repeat bg-cover bg-main-6 dark:bg-main-9 rounded-xl  ">
+      <Box id="ad" className="p-4 xs:p-10  bg-no-repeat bg-cover bg-main-6 dark:bg-main-9 rounded-xl  ">
         <Stack className="mb-5">
           <Title className="p-2 bg-gradient-to-r from-main-5 dark:from-main-8 rounded-md" order={2}>
             Featured Phones

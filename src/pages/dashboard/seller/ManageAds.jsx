@@ -1,3 +1,7 @@
+import { useUserContext } from "../../../context/userContext";
+import ProductsTable from "../tables/productsTable/ProductsTable";
+
 export default function ManageAds() {
-  return <div>this is ManageAds</div>;
+  const { email } = useUserContext();
+  return <ProductsTable options={{ ad: true, createdBy: email }} />;
 }

@@ -1,5 +1,5 @@
 import { IconUser } from "@tabler/icons";
-import Profile from "../../../context/profile-context/Profile";
+import Profile from "../../../context/profile-context/ProfileForm";
 import { useUserContext } from "../../../context/userContext";
 
 import adminLinks from "./adminlinks";

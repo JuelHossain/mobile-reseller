@@ -1,5 +1,4 @@
-import { Carousel } from "@mantine/carousel";
-import { ActionIcon, Badge, Button, Card, Chip, createStyles, Group, Image, Stack, Text } from "@mantine/core";
+import { ActionIcon, Badge, Button, Card, Chip, Group, Stack, Text } from "@mantine/core";
 import { IconCheck, IconHeart, IconStar } from "@tabler/icons";
 import moment from "moment/moment";
 import { useNavigate } from "react-router-dom";
@@ -7,36 +6,7 @@ import { useUserContext } from "../../../context/userContext";
 import useGetAUser from "../../../hooks/auth/useGetUser";
 import useUpdateCurrentUser from "../../../hooks/auth/useUpdateCurrentUser";
 import useGetOrders from "../../../hooks/orders/useGetOrders";
-
-const useStyles = createStyles((theme, _params, getRef) => ({
-  price: {
-    color: theme.colorScheme === "dark" ? theme.white : theme.black,
-  },
-
-  carousel: {
-    "&:hover": {
-      [`& .${getRef("carouselControls")}`]: {
-        opacity: 1,
-      },
-    },
-  },
-
-  carouselControls: {
-    ref: getRef("carouselControls"),
-    transition: "opacity 150ms ease",
-    opacity: 0,
-  },
-
-  carouselIndicator: {
-    width: 4,
-    height: 4,
-    transition: "width 250ms ease",
-
-    "&[data-active]": {
-      width: 16,
-    },
-  },
-}));
+import PhonePhotos from "./PhonePhotos";
 
 export default function PhoneCard({ product }) {
   const { imageLinks, brand, model, price, description, condition, _id, createdBy, createdAt } = product;
@@ -46,33 +16,16 @@ export default function PhoneCard({ product }) {
   const alreadyBooked = orders?.length > 0;
   const navigate = useNavigate();
 
-  const { classes } = useStyles();
   const { addToWishList, updatingUser } = useUpdateCurrentUser();
   const { wishlist } = useUserContext();
   const matched = wishlist?.filter((p) => p?._id === _id);
   const wishListed = matched?.length > 0;
   const myPhone = email === createdBy;
 
-  const slides = imageLinks?.map((image) => (
-    <Carousel.Slide key={image}>
-      <Image src={image} height={220} />
-    </Carousel.Slide>
-  ));
-
   return (
     <Card radius="md" withBorder p="xl" className="flex-col flex justify-between">
       <Card.Section>
-        <Carousel
-          withIndicators
-          loop
-          classNames={{
-            root: classes.carousel,
-            controls: classes.carouselControls,
-            indicator: classes.carouselIndicator,
-          }}
-        >
-          {slides}
-        </Carousel>
+        <PhonePhotos imageLinks={imageLinks} />
         <Badge size="xs" className="text-xs mt-1 m-0 absolute top-0 right-0">
           {moment(createdAt).startOf("hour").fromNow()}
         </Badge>
@@ -102,7 +55,7 @@ export default function PhoneCard({ product }) {
       <Card.Section className="px-4 pb-4 mt-3">
         <Group position="apart">
           <div className="line-clamp-1">
-            <Text size="xl" span weight={500} className={classes.price}>
+            <Text size="xl" span weight={500}>
               {price}
             </Text>
             <Text span size="sm" color="dimmed">

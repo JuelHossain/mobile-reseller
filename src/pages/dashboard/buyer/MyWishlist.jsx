@@ -1,12 +1,14 @@
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable no-unused-vars */
-import { LoadingOverlay, Notification, Text } from "@mantine/core";
+import { LoadingOverlay, Text } from "@mantine/core";
 import { openConfirmModal } from "@mantine/modals";
-import { IconHeart, IconTrash, IconX } from "@tabler/icons";
+import { IconHeart, IconTrash } from "@tabler/icons";
 import { useUserContext } from "../../../context/userContext";
 import useUpdateCurrentUser from "../../../hooks/auth/useUpdateCurrentUser";
 
 import ChangeStatus from "../shared/ChangeStatus";
+import NotFound from "../shared/NotFound";
+import ServerError from "../shared/ServerError";
 import DataTable from "../tables/dataTable/DataTable";
 
 export default function MyWishList() {
@@ -40,17 +42,8 @@ export default function MyWishList() {
     ],
   };
   if (userLoading) return <LoadingOverlay visible />;
-  if (userError)
-    return (
-      <Notification title="Server Side Error" icon={<IconX size={18} />} color="red">
-        Please Try again later.
-      </Notification>
-    );
+  if (userError) return <ServerError />;
   if (wishlist?.length === 0 || !wishlist)
-    return (
-      <Notification closeButtonProps={{ color: "red", variant: "light" }} title="No Wishlist">
-        You have not wish listed any phone
-      </Notification>
-    );
+    return <NotFound title="NO Product Found" children="You have not wish listed any item yet" />;
   return <DataTable data={data} />;
 }

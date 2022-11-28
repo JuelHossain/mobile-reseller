@@ -23,7 +23,7 @@ export default function PhoneForm() {
     <Paper
       onSubmit={submitHandler}
       component="form"
-      className={`max-w-lg flex flex-col justify-center gap-4 w-full ${!exist ? "p-4" : "pt-2"}`}
+      className={`max-w-3xl flex flex-col justify-center gap-4 w-full flex-1 ${!exist ? "p-6" : "pt-2"}`}
     >
       {!exist && <Heading {...heading} />}
       <Group>

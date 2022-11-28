@@ -4,11 +4,11 @@ import ProductsSidebar from "../../components/sidebar/ProductsSidebar";
 
 export default function Products() {
   return (
-    <Flex className=" gap-4 mt-5 sm:mt-10 max-w-7xl mx-auto justify-between p-4">
-      <Outlet />
-      <div className="hidden md:flex">
+    <Flex className=" gap-4  justify-between p-4 min-h-[92vh] ">
+      <div className="hidden md:flex sticky top-20">
         <ProductsSidebar />
       </div>
+      <Outlet />
     </Flex>
   );
 }

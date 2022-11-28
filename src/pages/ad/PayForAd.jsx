@@ -5,7 +5,7 @@ import PaymentMethods from "../products/payments/PaymentMethods";
 
 export default function PayForAd() {
   const { values } = useAdFormContext();
-  const { id, ...ad } = values;
+  const { id, price, ...ad } = values;
 
   const adDetails = {
     ...ad,

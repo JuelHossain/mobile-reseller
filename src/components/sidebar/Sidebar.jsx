@@ -2,7 +2,7 @@ import { Box, Card, Group, NavLink, Text } from "@mantine/core";
 import { Link, useLocation } from "react-router-dom";
 import { useHeaderContext } from "../../context/headerContext";
 
-export default function Sidebar({ navlinks, title, extra }) {
+export default function Sidebar({ navlinks, title, extra, left }) {
   const { disclosure } = useHeaderContext();
   const [, { close }] = disclosure;
 
@@ -29,7 +29,8 @@ export default function Sidebar({ navlinks, title, extra }) {
   return (
     <Card
       sx={(theme) => ({
-        borderLeft: theme.colorScheme === "light" && `1px solid ${theme.colors.gray[3]}`,
+        borderLeft: left && theme.colorScheme === "light" && `1px solid ${theme.colors.gray[3]}`,
+        borderRight: !left && theme.colorScheme === "light" && `1px solid ${theme.colors.gray[3]}`,
       })}
       className="w-60 p-0 py-2 rounded-none  "
     >

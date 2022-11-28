@@ -9,5 +9,5 @@ export default function DashboardSidebar() {
   // eslint-disable-next-line no-nested-ternary
   const title = admin ? "Admin Dashboard" : seller ? "Seller Dashboard" : "Buyer Dashboard";
 
-  return user && <Sidebar navlinks={links} title={title} extra={<ToggleRole />} />;
+  return user && <Sidebar left navlinks={links} title={title} extra={<ToggleRole />} />;
 }

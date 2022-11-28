@@ -1,14 +1,13 @@
-import { Divider, Group, Stack, Text, Title } from "@mantine/core";
+import { Group, Stack, Text, Title } from "@mantine/core";
 import { IconDeviceMobile } from "@tabler/icons";
 
 export default function Logo() {
   return (
-    <Group to="/" className="text-xl font-bold no-underline text-main-6 space-y-0">
-      <IconDeviceMobile className="w-8 h-8 sm:h-12 sm:w-12" />
-      <Divider orientation="vertical" color="primary" />
+    <Group spacing={2} to="/" className=" font-bold no-underline text-main-6 space-y-0">
+      <IconDeviceMobile size={35} />
       <Stack spacing={0}>
-        <Title className="text-xl sm:text-2xl">Mobile Reseller</Title>
-        <Text className="text-xs sm:text-sm">All Rights Reserved 2023</Text>
+        <Title className="text-xl ">Mobile Reseller</Title>
+        <Text className="text-xs ">All Rights Reserved 2023</Text>
       </Stack>
     </Group>
   );

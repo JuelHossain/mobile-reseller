@@ -7,9 +7,11 @@ export default function MobilePhones({ cat }) {
   const productsElement = products?.map((item) => <PhoneCard product={item} key={item?.model} />);
   if (productsError) return <Notification title="Server Side Error">Please Try Again Later</Notification>;
   return (
-    <div className="grid xs:grid-cols-2 lg:grid-cols-3  p-4 gap-4 relative flex-1">
-      {productsElement}
-      <LoadingOverlay visible={productsLoading} />
+    <div>
+      <div className="grid xs:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xxl:grid-cols-4 p-4 gap-4 relative ">
+        {productsElement}
+        <LoadingOverlay visible={productsLoading} />
+      </div>
     </div>
   );
 }

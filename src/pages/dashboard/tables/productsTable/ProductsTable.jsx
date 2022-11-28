@@ -1,6 +1,7 @@
-import { LoadingOverlay, Notification } from "@mantine/core";
-import { IconX } from "@tabler/icons";
+import { LoadingOverlay } from "@mantine/core";
 import useGetProducts from "../../../../hooks/phones/useGetProducts";
+import NotFound from "../../shared/NotFound";
+import ServerError from "../../shared/ServerError";
 
 import DataTable from "../dataTable/DataTable";
 import useProductActions from "./useProductActions";
@@ -12,21 +13,13 @@ export default function ProductsTable({ options, notFound }) {
 
   const rows = useProductRows(products);
   const headers = ["title", "status", "price", "Actions"];
-  const actions = useProductActions();
+  const actions = useProductActions(products);
 
   const data = { rows, headers, actions };
   if (productsLoading) return <LoadingOverlay visible />;
-  if (productsError)
-    return (
-      <Notification title="Server Side Error" icon={<IconX size={18} />} color="red">
-        Please Try again later.
-      </Notification>
-    );
+  if (productsError) return <ServerError />;
   if (products?.length === 0)
-    return (
-      <Notification closeButtonProps={{ color: "red", variant: "light" }} title={info || "Please Add A Phone"}>
-        {message || "You have not added any phone yet"}
-      </Notification>
-    );
+    return <NotFound title={info || "Please Add A Phone"} children={message || "You have not added any phone yet"} />;
+
   return <DataTable data={data} />;
 }

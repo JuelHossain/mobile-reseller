@@ -37,7 +37,7 @@ export default function MobileLinks() {
         <Stack>
           <UserSection mobile />
           <Stack spacing={8}>{mobileNavs}</Stack>
-          {inDashboard ? <DashboardSidebar /> : inProducts && <ProductsSidebar />}
+          {inDashboard ? <DashboardSidebar /> : inProducts && <ProductsSidebar left />}
         </Stack>
       </Menu.Dropdown>
     </Menu>
