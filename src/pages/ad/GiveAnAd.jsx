@@ -10,7 +10,7 @@ export default function GiveAnAd() {
 
   return (
     <AdFormProvider id={id}>
-      <Container className="mt-5 sm:mt-10 space-y-4">
+      <Container className="my-5 sm:my-10 space-y-4 ">
         <Title align="center" order={2}>
           Please Select An Ad Package For Your Product
         </Title>
