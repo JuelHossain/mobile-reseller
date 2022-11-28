@@ -21,7 +21,7 @@ export default function Page2() {
 
   return (
     <Paper component="form" className="flex flex-col gap-4">
-      <Title order={2}>Product And Seller Information</Title>
+      <Title order={3}>Product And Seller Information</Title>
       <Box className="flex flex-col gap-4">
         <Card>
           <Title order={4}>Product Details</Title>

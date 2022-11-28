@@ -1,10 +1,9 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import { ScrollArea, Stack, Text, Title } from "@mantine/core";
+import { ScrollArea, Stack, Text } from "@mantine/core";
 import { useState } from "react";
 
-export default function Page1(props) {
-  const { imageLinks, brand, model } = props || {};
+export default function Page1({ imageLinks }) {
   const [imgIndex, setImgIndex] = useState(0);
   const imagesButton = imageLinks?.map((image, index) => (
     <img
@@ -18,9 +17,10 @@ export default function Page1(props) {
 
   return (
     <div>
-      <Title order={2} className="text-center mb-4">{`${brand} ${model}`}</Title>
-      <Stack className="gap-2 rounded-xl">
-        <img src={imageLinks[imgIndex]} alt="phone" className="max-h-[50vh] object-contain rounded-md" />
+      <Stack className="gap-2 rounded-xl  ">
+        <div className="max-h-[40vh] overflow-hidden w-full h-full flex justify-center items-center bg-gray-200 p-4">
+          <img src={imageLinks[imgIndex]} alt="phone" className="rounded-md " />
+        </div>
         <ScrollArea>
           <div className="flex justify-center gap-2">{imagesButton}</div>
         </ScrollArea>

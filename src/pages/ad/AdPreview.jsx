@@ -1,7 +1,7 @@
 import { Button, createStyles, Group, Text, Title } from "@mantine/core";
 import moment from "moment";
 import { Link } from "react-router-dom";
-import PhonePhotos from "../products/mobile-phones/PhonePhotos";
+import PhonePhotos from "../products/mobile-phones/phone-card/PhonePhotos";
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
@@ -69,7 +69,7 @@ export default function AdPreview({ product }) {
   const { imageLinks, brand, model, adWillEnd, description } = product || {};
   const { classes } = useStyles();
   return (
-      <div className={classes.wrapper}>       
+    <div className={classes.wrapper}>
       <div className={classes.body}>
         <Title className={classes.title}>Your Ad Will End {moment(adWillEnd).endOf().fromNow()}</Title>
         <Text weight={500} size="lg" mb={5}>

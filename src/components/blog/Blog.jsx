@@ -72,7 +72,7 @@ export default function Blog() {
   ));
 
   return (
-    <Container size="2xl" className={classes.wrapper}>
+    <Container size="xl" className={classes.wrapper}>
       <Text className={classes.supTitle}>blogs</Text>
 
       <Title className={classes.title} order={2}>

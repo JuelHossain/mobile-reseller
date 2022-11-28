@@ -1,6 +1,6 @@
 /* eslint-disable no-await-in-loop */
 
-import { openConfirmModal } from "@mantine/modals";
+import { closeAllModals, openConfirmModal } from "@mantine/modals";
 import { showNotification } from "@mantine/notifications";
 import { useNavigate } from "react-router-dom";
 import useUpdateUser from "../../hooks/auth/useUpdateUser";
@@ -69,6 +69,7 @@ export default function useBookingHandler({ onSubmit }, id, product) {
         });
         await updateProductAsync({ patch: { status: "booked" }, id });
         navigate("/dashboard/my-orders");
+        closeAllModals();
       }
     };
     onSubmit(handler)(e);

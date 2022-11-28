@@ -1,4 +1,4 @@
-import { Container, LoadingOverlay, Notification } from "@mantine/core";
+import { LoadingOverlay, Notification } from "@mantine/core";
 import { IconX } from "@tabler/icons";
 import { useBookingFormContext } from "../../../../context/booking-context/bookingFormContext";
 import useBookingController from "../../../../context/booking-context/useBookingController";
@@ -17,9 +17,9 @@ export default function ProductDetails() {
     );
 
   return (
-    <Container className="my-5 sm:my-10">
+    <>
       <ActivePage {...product} />
       <Controllers {...controllerProps} />
-    </Container>
+    </>
   );
 }

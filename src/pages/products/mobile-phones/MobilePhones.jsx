@@ -1,6 +1,6 @@
 import { LoadingOverlay, Notification } from "@mantine/core";
 import useGetProducts from "../../../hooks/phones/useGetProducts";
-import PhoneCard from "./PhoneCard";
+import PhoneCard from "./phone-card/PhoneCard";
 
 export default function MobilePhones({ cat }) {
   const { products, productsLoading, productsError } = useGetProducts({ cat });

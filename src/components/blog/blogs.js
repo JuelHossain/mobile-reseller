@@ -1,23 +1,23 @@
 const blogs = [
   {
-    question: "Difference between SQL and NoSQL",
+    question: "What are the different ways to manage a state in a React application?",
     answer:
-      "sql databases have fixed or static or predefined schema, nosql databases have dynamic schema, sql databases are not suited for hierarchical data storage but nosql databases are best suited for hierarchical data storage, sql databases are best suited for complex queries and nosql databases are not so good for complex queries, sql database is vertically scalable but no sql are horizontally scalable, sql follows ACID property and nosql follows CAP(consistency, availablity,partition,tolerance)",
+      "there is multiple ways to mange state in react application. we can manage state in local state, global state, server state, url state . Local state is data we manage in one or another component. Global state is data we manage across multiple components.Data that comes from an external server that must be integrated with our UI state.Data that exists on our URLs, including the pathname and query parameters.",
   },
   {
-    question: "What is JWT, and how does it work",
+    question: " How does prototypical inheritance work?",
     answer:
-      "JSON Web Token (JWT) is an open standard (RFC 7519) for securely transmitting information between parties as JSON object.It is compact, readable and digitally signed using a private key/ or a public key pair by the Identity Provider(IdP). So the integrity and authenticity of the token can be verified by other parties involved.The purpose of using JWT is not to hide data but to ensure the authenticity of the data. JWT is signed and encoded, not encrypted. ",
+      "Prototypal Inheritance is a feature in javascript used to add methods and properties in objects. It is a method by which an object can inherit the properties and methods of another object. Traditionally, in order to get and set the [[Prototype]] of an object, we use Object.getPrototypeOf and Object.",
   },
   {
-    question: "What is the difference between javascript and NodeJS",
+    question: "What is a unit test? Why should we write unit tests?",
     answer:
-      "NodeJS is a cross-platform and opensource Javascript runtime environment that allows the javascript to be run on the server-side. Nodejs allows Javascript code to run outside the browser. Nodejs comes with a lot of modules and mostly used in web development. and Javascript is a Scripting language. It is mostly abbreviated as JS. It can be said that Javascript is the updated version of the ECMA script. Javascript is a high-level programming language that uses the concept of Oops but it is based on prototype inheritance. ",
+      "A unit test is a way of testing a unit - the smallest piece of code that can be logically isolated in a system. In most programming languages, that is a function, a subroutine, a method or property. The isolated part of the definition is important. ",
   },
   {
-    question: "How does NodeJS handle multiple requests at the same time",
+    question: "React vs. Angular vs. Vue?",
     answer:
-      "NodeJS receives multiple client requests and places them into EventQueue. NodeJS is built with the concept of event-driven architecture. NodeJS has its own EventLoop which is an infinite loop that receives requests and processes them. EventLoop is the listener for the EventQueue.We know NodeJS application is single-threaded. Say, if processing involves request A that takes 10 seconds, it does not mean that a request which comes after this request needs to wait 10 seconds to start processing because NodeJS event loops are only single-threaded. The entire NodeJS architecture is not single-threaded. ",
+      "React offers a Getting Started guide that should help one set up React in about an hour.Angular has a steep learning curve, considering it is a complete solution, and mastering Angular requires you to learn associated concepts like TypeScript and MVC.Vue provides higher customizability and hence is easier to learn than Angular or React. Further, Vue has an overlap with Angular and React with respect to their functionality like the use of components. Hence, the transition to Vue from either of the two is an easy option ",
   },
 ];
 export default blogs;

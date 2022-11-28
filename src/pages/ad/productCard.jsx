@@ -3,7 +3,7 @@ import { IconDeviceMobileVibration } from "@tabler/icons";
 import { useAdFormContext } from "../../context/adFormContext/adFormContext";
 
 export default function ProductCard({ product }) {
-  const { brand, model, price, _id } = product || {};
+  const { brand, model, _id } = product || {};
   const { setValues, values: { id } = {} } = useAdFormContext();
   const selected = id === _id;
   return (

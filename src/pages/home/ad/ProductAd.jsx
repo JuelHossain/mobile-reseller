@@ -1,6 +1,6 @@
 import { Box, Container, SimpleGrid, Stack, Title } from "@mantine/core";
 import useGetProducts from "../../../hooks/phones/useGetProducts";
-import PhoneCard from "../../products/mobile-phones/PhoneCard";
+import PhoneCard from "../../products/mobile-phones/phone-card/PhoneCard";
 
 export default function ProductAd() {
   const { products } = useGetProducts({ ad: true });

@@ -4,7 +4,6 @@ import ProductDetails from "./pages/ProductDetails";
 
 export default function BookingPage() {
   const { id } = useParams();
-
   return (
     <BookingFormProvider id={id}>
       <ProductDetails />
