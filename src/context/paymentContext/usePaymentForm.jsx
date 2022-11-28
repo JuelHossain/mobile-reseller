@@ -4,10 +4,10 @@ import { useForm } from "@mantine/form";
 import initialPaymentForm from "./initialPayemntForm";
 import usePaymentHandler from "./usePaymentHandler";
 
-export default function usePaymentForm(id,productId) {
+export default function usePaymentForm(id, productId, ad) {
   const form = useForm(initialPaymentForm);
 
-  const { submitHandler, submitting, submitError } = usePaymentHandler(form, id,productId);
+  const { submitHandler, submitting, submitError } = usePaymentHandler(form, id, productId, ad);
 
   const paymentMethods = ["Debit Card", "Credit Card", "Bkash", "Nagad", "Rocket", "Upay"];
 

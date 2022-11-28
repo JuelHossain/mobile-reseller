@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { usePaymentFormContext } from "../../../context/paymentContext/paymentFormContext";
 import { useUserContext } from "../../../context/userContext";
 
-export default function PaymentForm({ id, price }) {
+export default function PaymentForm({ id, price, noDetails }) {
   const { getInputProps, values: { paymentMethod } = {}, submitting, submitHandler } = usePaymentFormContext();
 
   const { user: { displayName, email } = {} } = useUserContext();
@@ -11,9 +11,11 @@ export default function PaymentForm({ id, price }) {
     <form onSubmit={submitHandler}>
       <Group position="apart">
         <p className="text-xl">Go Ahead Do it</p>
-        <Button compact component={Link} to={`/products/booking/${id}`}>
-          Check The Booking Details
-        </Button>
+        {!noDetails && (
+          <Button compact component={Link} to={`/products/booking/${id}`}>
+            Check The Booking Details
+          </Button>
+        )}
       </Group>
       <SimpleGrid cols={2}>
         <NumberInput hideControls {...getInputProps("cardNumber")} label={`Your ${paymentMethod} Number`} />

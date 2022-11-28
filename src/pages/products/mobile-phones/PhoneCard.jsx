@@ -1,9 +1,10 @@
 import { Carousel } from "@mantine/carousel";
-import { ActionIcon, Badge, Button, Card, createStyles, Group, Image, Stack, Text } from "@mantine/core";
+import { ActionIcon, Badge, Button, Card, Chip, createStyles, Group, Image, Stack, Text } from "@mantine/core";
 import { IconCheck, IconHeart, IconStar } from "@tabler/icons";
 import moment from "moment/moment";
 import { useNavigate } from "react-router-dom";
 import { useUserContext } from "../../../context/userContext";
+import useGetAUser from "../../../hooks/auth/useGetUser";
 import useUpdateCurrentUser from "../../../hooks/auth/useUpdateCurrentUser";
 import useGetOrders from "../../../hooks/orders/useGetOrders";
 
@@ -40,6 +41,7 @@ const useStyles = createStyles((theme, _params, getRef) => ({
 export default function PhoneCard({ product }) {
   const { imageLinks, brand, model, price, description, condition, _id, createdBy, createdAt } = product;
   const { email, userLoading } = useUserContext();
+  const { user: seller, userLoading: sellerLoading } = useGetAUser(createdBy);
   const { orders, ordersLoading } = useGetOrders({ email, productId: _id });
   const alreadyBooked = orders?.length > 0;
   const navigate = useNavigate();
@@ -75,26 +77,26 @@ export default function PhoneCard({ product }) {
           {moment(createdAt).startOf("hour").fromNow()}
         </Badge>
 
-        <Stack className="px-4 gap-0">
-          <Group className="items-start w-full justify-between " mt="lg">
-            <Group className="w-3/5">
-              <Text weight={500} size="lg" className="line-clamp-2">
-                {`${brand} ${model}`}
+        <Stack className="px-4 gap-2 mt-2">
+          <Group className="justify-between w-full" noWrap>
+            <Chip size="xs" radius={4} variant="filled" checked={seller?.verified} readOnly right>
+              <p className="m-0  hidden sm:inline">Selling By</p> {seller?.displayName}
+            </Chip>
+            <Group spacing={5} className="2/5" noWrap>
+              <IconStar size={14} />
+              <Text size="xs" weight={500} className="capitalize">
+                {condition}
               </Text>
             </Group>
-
-            <div>
-              <Group spacing={5} className="2/5">
-                <IconStar size={16} />
-                <Text size="xs" weight={500} className="capitalize">
-                  {condition}
-                </Text>
-              </Group>
-            </div>
           </Group>
-          <Text size="sm" color="dimmed" mt="sm" className="line-clamp-3">
-            {description}
-          </Text>
+          <div>
+            <Text weight={500} className="line-clamp-2 ">
+              {`${brand} ${model}`}
+            </Text>
+            <Text size="sm" color="dimmed" className="line-clamp-3">
+              {description}
+            </Text>
+          </div>
         </Stack>
       </Card.Section>
       <Card.Section className="px-4 pb-4 mt-3">
@@ -108,7 +110,7 @@ export default function PhoneCard({ product }) {
             </Text>
           </div>
 
-          <Group>
+          <Group noWrap>
             <ActionIcon
               loading={updatingUser}
               onClick={() => addToWishList(product)}
@@ -119,7 +121,7 @@ export default function PhoneCard({ product }) {
               <IconHeart size={16} />
             </ActionIcon>
             <Button
-              loading={ordersLoading || userLoading}
+              loading={ordersLoading || userLoading || sellerLoading}
               rightIcon={alreadyBooked && <IconCheck size={18} />}
               size="xs"
               onClick={() => alreadyBooked || myPhone || navigate(`/products/booking/${_id}`)}
