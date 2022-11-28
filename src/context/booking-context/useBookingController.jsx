@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Page1 from "../../pages/products/bookings/pages/page1";
 import Page2 from "../../pages/products/bookings/pages/Page2";
 import Page3 from "../../pages/products/bookings/pages/Page3";
 import { useBookingFormContext } from "./bookingFormContext";
@@ -7,7 +6,7 @@ import { useBookingFormContext } from "./bookingFormContext";
 export default function useBookingController() {
   const { alreadyBooked } = useBookingFormContext();
 
-  const pages = [Page1, Page2, Page3];
+  const pages = [Page2, Page3];
   const [pageIndex, setActivePage] = useState(0);
   const ActivePage = pages[pageIndex];
   const next = () => setActivePage((page) => page + 1);

@@ -11,7 +11,7 @@ export default function OrdersTable({ options }) {
   const { orders, ordersLoading, ordersError } = useGetOrders(options);
   const rows = useOrderRows(orders);
   const actions = useOrderActions();
-  const headers = ["title", "payment", "price", "Actions"];
+  const headers = ["title", "booking Details", "payment", "price", "Actions"];
 
   const data = { rows, headers, actions };
 

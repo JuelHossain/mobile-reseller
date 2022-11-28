@@ -8,16 +8,21 @@ export default function useOrderRows(orders) {
   const navigate = useNavigate();
   const rows = orders?.map((item) => {
     const { _id: id, brand, model, price, paid } = item || {};
+    const payment = (
+      <Button onClick={() => !paid && !admin && navigate(`/payment/${id}`)} compact variant="light" key={id}>
+        {paid ? "paid" : admin ? "Unpaid" : "Pay now"}
+      </Button>
+    );
+    const bookingDetails = (
+      <Button variant="outline" compact>
+        Check Booking
+      </Button>
+    );
     return {
       id,
       title: `${brand} ${model}`,
       image: <IconDeviceMobileCharging size={16} />,
-      cols: [
-        <Button onClick={() => !paid && !admin && navigate(`/payment/${id}`)} compact variant="light" key={id}>
-          {paid ? "paid" : admin ? "Unpaid" : "Pay now"}
-        </Button>,
-        price,
-      ],
+      cols: [bookingDetails, payment, price],
     };
   });
   return rows;

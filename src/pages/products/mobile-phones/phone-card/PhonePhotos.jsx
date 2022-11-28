@@ -1,5 +1,6 @@
 import { Carousel } from "@mantine/carousel";
 import { createStyles, Image } from "@mantine/core";
+import { PhotoProvider, PhotoView } from "react-photo-view";
 
 const useStyles = createStyles((theme, _params, getRef) => ({
   carousel: {
@@ -32,20 +33,24 @@ export default function PhonePhotos({ imageLinks }) {
 
   const slides = imageLinks?.map((image) => (
     <Carousel.Slide key={image}>
-      <Image src={image} height={220} />
+      <PhotoView src={image}>
+        <Image src={image} height={220} />
+      </PhotoView>
     </Carousel.Slide>
   ));
   return (
-    <Carousel
-      withIndicators
-      loop
-      classNames={{
-        root: classes.carousel,
-        controls: classes.carouselControls,
-        indicator: classes.carouselIndicator,
-      }}
-    >
-      {slides}
-    </Carousel>
+    <PhotoProvider>
+      <Carousel
+        withIndicators
+        loop
+        classNames={{
+          root: classes.carousel,
+          controls: classes.carouselControls,
+          indicator: classes.carouselIndicator,
+        }}
+      >
+        {slides}
+      </Carousel>
+    </PhotoProvider>
   );
 }

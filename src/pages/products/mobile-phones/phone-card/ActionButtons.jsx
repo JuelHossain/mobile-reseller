@@ -1,19 +1,15 @@
 import { ActionIcon, Button, Group, Title } from "@mantine/core";
-import { openModal } from "@mantine/modals";
+import { openContextModal } from "@mantine/modals";
 import { IconCheck, IconHeart } from "@tabler/icons";
-import { useNavigate } from "react-router-dom";
-import { BookingFormProvider } from "../../../../context/booking-context/bookingFormContext";
 import { useUserContext } from "../../../../context/userContext";
 import useUpdateCurrentUser from "../../../../hooks/auth/useUpdateCurrentUser";
 import useGetOrders from "../../../../hooks/orders/useGetOrders";
-import ProductDetails from "../../bookings/pages/ProductDetails";
 
 export default function ActionButtons({ product, sellerLoading }) {
   const { createdBy, _id, brand, model } = product || {};
   const { email, userLoading, seller, admin } = useUserContext();
   const { orders, ordersLoading } = useGetOrders({ email, productId: _id });
   const alreadyBooked = orders?.length > 0;
-  const navigate = useNavigate();
 
   const { addToWishList, updatingUser } = useUpdateCurrentUser();
   const { wishlist } = useUserContext();
@@ -25,17 +21,14 @@ export default function ActionButtons({ product, sellerLoading }) {
     myPhone ||
     seller ||
     admin ||
-    openModal({
+    openContextModal({
+      modal: "bookingModal",
       title: (
         <Title order={3}>
-          {brand} {model}
+          {brand} ${model}`
         </Title>
       ),
-      children: (
-        <BookingFormProvider id={_id}>
-          <ProductDetails />
-        </BookingFormProvider>
-      ),
+      innerProps: { productId: _id },
       centered: true,
       lockScroll: true,
       overflow: "inside",
