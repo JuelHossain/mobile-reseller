@@ -25,7 +25,7 @@ export default function Page1({ imageLinks }) {
           <div className="flex justify-center gap-2">{imagesButton}</div>
         </ScrollArea>
       </Stack>
-      <Text className="font-bold text-center max-w-md mx-auto mt-4 text-neu-7 dark:text-neu-3">
+      <Text className="font-bold  max-w-md mx-auto mt-4 text-neu-7 dark:text-neu-3">
         Please check the phone photos one more time , so that you can be so sure that you need this phone
       </Text>
     </div>
