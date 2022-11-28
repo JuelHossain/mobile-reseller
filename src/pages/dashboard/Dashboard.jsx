@@ -5,6 +5,7 @@ import useSetPageTitle from "../../hooks/shared/useSetPageTitle";
 
 export default function Dashboard() {
   useSetPageTitle("Dashboard");
+  // this is the dashboard where everyone cry. and now its my turn.
   return (
     <Flex className=" gap-4  justify-between p-4 min-h-[92vh]">
       <Outlet />
