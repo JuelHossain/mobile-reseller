@@ -1,12 +1,12 @@
-import { ActionIcon, Button, Group, Title } from "@mantine/core";
-import { openContextModal } from "@mantine/modals";
+import { ActionIcon, Button, Group } from "@mantine/core";
 import { IconCheck, IconHeart } from "@tabler/icons";
+import { openBookingModal } from "../../../../components/modals/bookingModal";
 import { useUserContext } from "../../../../context/userContext";
 import useUpdateCurrentUser from "../../../../hooks/auth/useUpdateCurrentUser";
 import useGetOrders from "../../../../hooks/orders/useGetOrders";
 
 export default function ActionButtons({ product, sellerLoading }) {
-  const { createdBy, _id, brand, model } = product || {};
+  const { createdBy, _id } = product || {};
   const { email, userLoading, seller, admin } = useUserContext();
   const { orders, ordersLoading } = useGetOrders({ email, productId: _id });
   const alreadyBooked = orders?.length > 0;
@@ -16,24 +16,7 @@ export default function ActionButtons({ product, sellerLoading }) {
   const matched = wishlist?.filter((p) => p?._id === _id);
   const wishListed = matched?.length > 0;
   const myPhone = email === createdBy;
-  const bookingHandler = () =>
-    alreadyBooked ||
-    myPhone ||
-    seller ||
-    admin ||
-    openContextModal({
-      modal: "bookingModal",
-      title: (
-        <Title order={3}>
-          {brand} ${model}`
-        </Title>
-      ),
-      innerProps: { productId: _id },
-      centered: true,
-      lockScroll: true,
-      overflow: "inside",
-      size: 500,
-    });
+  const bookingHandler = () => alreadyBooked || myPhone || seller || admin || openBookingModal(_id);
   return (
     <Group noWrap>
       <ActionIcon

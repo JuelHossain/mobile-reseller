@@ -23,7 +23,7 @@ export default function Page3({ hideAddress }) {
 
   return (
     <Paper component="form" className="flex flex-col gap-4">
-      <Box className="flex flex-col gap-4">
+      <Box className="flex flex-col gap-2">
         <Card>
           <Title order={4}>Your Details</Title>
           <SimpleGrid cols={2}>{buyerInputs}</SimpleGrid>

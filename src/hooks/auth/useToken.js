@@ -7,7 +7,7 @@ export default function useToken() {
   const { setToken, removeToken } = useTokenContext();
 
   const getToken = async (user) => {
-    const { data } = await axios.put(`/users`, user);
+    const { data } = (await axios.put(`/users`, user)) || {};
     return data;
   };
 

@@ -25,7 +25,7 @@ export default function useSocialLogin() {
       generateToken(user);
     }
     if (error) {
-      setError(error.message);
+      setError(error?.message);
     }
   }, [user, error, setError, generateToken]);
 

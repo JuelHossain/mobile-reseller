@@ -28,7 +28,7 @@ export default function useAuthHandler({ form, type, setError }) {
 
   useEffect(() => {
     if (authError) {
-      setError(authError.message);
+      setError(authError?.message);
     }
   }, [setError, user, authError]);
 

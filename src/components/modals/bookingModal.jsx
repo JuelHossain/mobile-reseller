@@ -12,15 +12,11 @@ export default function BookingModal({ innerProps }) {
   );
 }
 
-export const openBookingModal = ({ brand, model, _id }) =>
+export const openBookingModal = (id) =>
   openContextModal({
     modal: "bookingModal",
-    title: (
-      <Title order={3}>
-        {brand} ${model}`
-      </Title>
-    ),
-    innerProps: { productId: _id },
+    title: <Title order={3}>Please Book Your Product</Title>,
+    innerProps: { productId: id },
     centered: true,
     lockScroll: true,
     overflow: "inside",
