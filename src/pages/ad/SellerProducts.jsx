@@ -7,7 +7,7 @@ import ProductCard from "./productCard";
 
 export default function SellerProducts() {
   const { email } = useUserContext();
-  const { products, productsLoading, productsError } = useGetProducts({ createdBy: email });
+  const { products, productsLoading, productsError } = useGetProducts({ createdBy: email, ad: false });
   if (productsError) return <ServerError />;
   if (products?.length === 0)
     return <NotFound title="You Don't have any products" children=" Please add a product first from  your dashboard" />;
