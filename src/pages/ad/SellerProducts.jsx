@@ -14,13 +14,13 @@ export default function SellerProducts() {
   const productsElement = products?.map((product) => <ProductCard product={product} key={product._id} />);
   return (
     <div>
-      <Title align="center " order={2}>
+      <Title align="center " order={2} mb={20}>
         Please Select A Product To Ad
-        <SimpleGrid cols={3} breakpoints={[{ maxWidth: "sm", cols: 1 }]}>
-          {productsElement}
-          <LoadingOverlay visible={productsLoading} />
-        </SimpleGrid>
       </Title>
+      <SimpleGrid cols={3} breakpoints={[{ maxWidth: "sm", cols: 1 }]}>
+        {productsElement}
+        <LoadingOverlay visible={productsLoading} />
+      </SimpleGrid>
     </div>
   );
 }
