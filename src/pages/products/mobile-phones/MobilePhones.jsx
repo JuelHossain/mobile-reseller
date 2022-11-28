@@ -8,7 +8,7 @@ export default function MobilePhones({ cat }) {
   const productsElement = products?.map((item) => <PhoneCard product={item} key={item?.model} />);
   if (productsError) return <ServerError />;
   return (
-    <Paper withBorder className="flex-1 relative">
+    <Paper className="flex-1 relative">
       <div className="grid xs:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xxl:grid-cols-4 p-4 gap-4 relative ">
         {productsElement}
       </div>

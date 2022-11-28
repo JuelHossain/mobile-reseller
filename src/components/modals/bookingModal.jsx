@@ -21,4 +21,5 @@ export const openBookingModal = (id) =>
     lockScroll: true,
     overflow: "inside",
     size: 500,
+    classNames: { modal: "min-h-[55vh]" },
   });
