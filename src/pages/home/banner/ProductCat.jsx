@@ -51,12 +51,12 @@ export default function ProductCategories() {
               Choice The Best Phone For You
             </Title>
             <Container size="sm" align="center">
-              <Text className="text-md xs:text-xl">
+              <Text className="text-md xs:text-xl line-clamp-4">
                 mobile seller here for you , we are making the seller and buyer life easier by our service please choice
                 the best phone for you from below categories
               </Text>
             </Container>
-            <SimpleGrid cols={2} mt="md">
+            <SimpleGrid cols={2}  mt="md">
               {items}
             </SimpleGrid>
           </Stack>
